@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "defesa-digital",
+  "short_name": "Defesa Digital",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#000000",
+  "description": "A lista definitiva de segurança pessoal"
+}
