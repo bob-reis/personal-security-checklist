@@ -177,15 +177,20 @@ export default component$(() => {
 
     // (Re)draw radar chart
     if (radarChart.value) {
-      // Ensure Chart.js is registered
-      Chart.register(...registerables);
-      const ctx = radarChart.value.getContext('2d');
+      // Ensure Chart.js is registered once
+      const anyChart: any = Chart as any;
+      if (!anyChart._qwikRegistered) {
+        Chart.register(...registerables);
+        anyChart._qwikRegistered = true;
+      }
+      const el = radarChart.value as any;
+      const ctx = el.getContext('2d');
       if (ctx) {
         const labels = (checklists.value as Sections).map((s: Section) => s.title);
-        // Destroy any existing chart bound to this canvas
-        const existing = (Chart as any).getChart ? (Chart as any).getChart(ctx.canvas) : null;
-        if (existing) existing.destroy();
-        new Chart(ctx, {
+        // Destroy any existing chart bound to this canvas (stored on element)
+        const prev = el._chartInstance as any | undefined;
+        if (prev && typeof prev.destroy === 'function') prev.destroy();
+        const inst = new Chart(ctx, {
           type: 'radar',
           data: {
             labels,
@@ -222,6 +227,7 @@ export default component$(() => {
             },
           },
         });
+        el._chartInstance = inst;
       }
     }
   });
@@ -281,7 +287,7 @@ export default component$(() => {
         ))}
       </div>
       {/* Tips card (random tip, same layout/size) */}
-      <div class="p-4 rounded-box bg-front shadow-md w-96 flex-grow">
+      <div class="p-4 rounded-box bg-front shadow-md w-96 flex-grow min-h-[112px]">
         <p class="text-sm opacity-80 mb-2">Dica rápida de segurança:</p>
         <p class="text-lg">{currentTip.value}</p>
       </div>
