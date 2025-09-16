@@ -20,8 +20,7 @@ export default component$(() => {
   const [checkedItems] = useLocalStorage('PSC_PROGRESS', {});
   // Ignored items, from local storage
   const [ignoredItems] = useLocalStorage('PSC_IGNORED', {});
-  // Local storage for closing and ignoring the welcome dialog
-  const [ignoreDialog, setIgnoreDialog] = useLocalStorage('PSC_CLOSE_WELCOME', false);
+  // Removed welcome dialog state (previously PSC_CLOSE_WELCOME)
   // Store to hold calculated progress results
   const totalProgress = useSignal({ completed: 0, outOf: 0 });
   // Ref to the radar chart canvas
