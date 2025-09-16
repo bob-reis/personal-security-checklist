@@ -1,5 +1,8 @@
 {
   "license": "MIT",
+  "engines": {
+    "node": "^18 || ^20"
+  },
   "scripts": {
     "prebuild": "node scripts/generate-checklist.mjs",
     "build": "qwik build",

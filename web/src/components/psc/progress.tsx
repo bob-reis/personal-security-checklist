@@ -123,51 +123,7 @@ export default component$(() => {
     });
   });
 
-  /**
-   * Given a priority, filters the checklist, calculates data, renders chart
-   * @param priority - The priority to filter by
-   * @param color - The color override for the chart
-   */
-  const makeDataAndDrawChart = $((priority: Priority, color?: string) => {
-    filterByPriority(checklists.value, priority)
-    .then((sections: Sections) => {
-      calculateProgress(sections)
-        .then((progress) => {
-          const { completed, outOf } = progress;
-          const percent = outOf > 0 ? Math.round((completed / outOf) * 100) : 0;
-          drawProgress(percent, `#${priority}-container`, color)
-        })
-    });
-  });
-
-  /**
-   * When the window has loaded (client-side only)
-   * Initiate the filtering, calculation and rendering of progress charts
-   */
-  useOnWindow('load', $(() => {
-
-    calculateProgress(checklists.value)
-      .then((progress) => {
-        totalProgress.value = progress;
-    })
-
-    // Use plain hex for compatibility
-    makeDataAndDrawChart('essential', '#22c55e'); // green-500
-    makeDataAndDrawChart('optional',  '#f59e0b'); // amber-500
-    makeDataAndDrawChart('advanced',  '#ef4444'); // red-500
-  }));
-
-
-  /**
-   * Calculates the percentage of completion for each section
-   */
-  useOnWindow('load', $(async () => {
-    sectionCompletion.value = await Promise.all(checklists.value.map(section => {
-      return calculateProgress([section]).then(
-        (progress) => Math.round(progress.completed / progress.outOf * 100)
-      );
-    }));
-  }));
+  // (Removed legacy window-load handlers; logic moved to useVisibleTask$ above)
 
   // Random tips for the small card (keeps same layout/size)
   const tips = [
@@ -273,113 +229,8 @@ export default component$(() => {
   });
 
 
-  interface RadarChartData {
-    labels: string[];
-    datasets: {
-      label: string;
-      data: number[];
-      [key: string]: any; // Anything else goes!
-    }[];
-  }
+  // (Removed legacy radar data builder; radar chart now populated in useVisibleTask$)
 
-  /**
-   * Builds the multi-dimensional data used for the radar chart
-   * based on each section, each level of priority, and the progress
-   * @param sections - The sections to build data from
-   */
-  const makeRadarData = $((sections: Sections): Promise<RadarChartData> => {
-    // The labels for the corners of the chart, based on sections
-    const labels = sections.map((section: Section) => section.title);
-    // Items applied to every dataset
-    const datasetTemplate = {
-      borderWidth: 1,
-    };
-    // Helper function to asynchronously calculate percentage
-    const calculatePercentage = async (section: Section, priority: Priority) => {
-      const filteredSections = await filterByPriority([section], priority);
-      const progress = await calculateProgress(filteredSections);
-      return progress.outOf > 0 ? (progress.completed / progress.outOf) * 100 : 0;
-    };
-  
-    // Asynchronously build data for each priority level
-    const buildDataForPriority = (priority: Priority, color: string) => {
-      return Promise.all(sections.map(section => calculatePercentage(section, priority)))
-        .then(data => ({
-          ...datasetTemplate,
-          label: priority === 'essential'
-            ? 'Essencial'
-            : priority === 'optional'
-              ? 'Opcional'
-              : 'Avançado',
-          data: data,
-          backgroundColor: color,
-        }));
-    };
-  
-    // Wait on each set to resolve, and return the final data object
-    return Promise.all([
-      buildDataForPriority('advanced', 'hsl(0 91% 71%/75%)'),
-      buildDataForPriority('optional', 'hsl(43 96% 56%/75%)'),
-      buildDataForPriority('essential', 'hsl(158 64% 52%/75%)'),      
-    ]).then(datasets => ({
-      labels,
-      datasets,
-    }));
-  });
-  
-  
-
-  useOnWindow('load', $(() => {
-    Chart.register(...registerables);
-
-    makeRadarData(checklists.value).then((data) => {
-      if (radarChart.value) {
-        new Chart(radarChart.value, {
-          type: 'radar',
-          data,
-          options: {
-            responsive: true,
-            scales: {
-              r: {
-                angleLines: {
-                  display: true,
-                  color: '#7d7d7da1',
-                },
-                suggestedMin: 0,
-                suggestedMax: 100,
-                ticks: {
-                  stepSize: 25,
-                  callback: (value) => `${value}%`,
-                  color: '#ffffffbf',
-                  backdropColor: '#ffffff3b',
-                },
-                grid: {
-                  display: true,
-                  color: '#7d7d7dd4',
-                },
-              },
-            },
-            plugins: {
-              legend: {
-                position: 'bottom',
-                labels: {
-                  font: {
-                    size: 10,
-                  },
-                },
-              },
-              tooltip: {
-                callbacks: {
-                  label: (ctx) => `Concluído ${Math.round(ctx.parsed.r)}% de ${ctx.dataset.label || ''}`,
-                }
-              }
-            },
-          }
-        });
-        
-      }
-    });
-  }));
 
   const items = [
     { id: 'essential-container', label: 'Essencial' },
