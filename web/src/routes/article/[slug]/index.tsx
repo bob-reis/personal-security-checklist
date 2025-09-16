@@ -123,3 +123,6 @@ export const head: DocumentHead = {
     },
   ],
 };
+
+// Disable SSG for dynamic article pages; content is fetched client-side
+export const onStaticGenerate = () => ({ noPrerender: true });

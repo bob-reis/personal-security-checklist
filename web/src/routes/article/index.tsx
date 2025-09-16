@@ -27,3 +27,6 @@ export default component$(() => {
     </div>
   );
 });
+
+// Disable SSG for this route to avoid build-time prerender errors
+export const onStaticGenerate = () => ({ noPrerender: true });
