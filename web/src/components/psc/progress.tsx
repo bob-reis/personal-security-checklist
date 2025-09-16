@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useOnWindow, useContext, useVisibleTask$ } from "@builder.io/qwik";
+import { $, component$, useSignal, useContext, useVisibleTask$ } from "@builder.io/qwik";
 import { Chart, registerables } from 'chart.js';
 
 import { useLocalStorage } from "~/hooks/useLocalStorage";
@@ -89,7 +89,7 @@ export default component$(() => {
       : (target as unknown as HTMLElement);
     if (!container) return;
     // Clear previous drawings when re-rendering
-    try { (container as HTMLElement).innerHTML = ''; } catch {}
+    try { (container as HTMLElement).innerHTML = ''; } catch (_e) { /* no-op: container may be virtual during SSR */ }
     // Define colors in hex/RGB for progressbar.js compatibility
     const primaryColor = color || '#9ca3af'; // gray-400
     const foregroundColor = '#6b7280'; // gray-500
@@ -245,7 +245,7 @@ export default component$(() => {
     makeRadarData(checklists.value).then((data) => {
       if (radarChart.value) {
         // Destroy old instance if present
-        try { radarInstance.value?.destroy?.(); } catch {}
+        try { radarInstance.value?.destroy?.(); } catch (_e) { /* no-op: chart not initialized */ }
         radarInstance.value = new Chart(radarChart.value, {
           type: 'radar',
           data,
