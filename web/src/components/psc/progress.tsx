@@ -187,7 +187,11 @@ export default component$(() => {
       const ctx = el.getContext('2d');
       if (ctx) {
         const labels = (checklists.value as Sections).map((s: Section) => s.title);
-        // Destroy any existing chart bound to this canvas (stored on element)
+        // Destroy any existing chart bound to this canvas (from registry or element)
+        const existingByRegistry = (Chart as any).getChart ? (Chart as any).getChart(el) : null;
+        if (existingByRegistry && typeof existingByRegistry.destroy === 'function') {
+          existingByRegistry.destroy();
+        }
         const prev = el._chartInstance as any | undefined;
         if (prev && typeof prev.destroy === 'function') prev.destroy();
         const inst = new Chart(ctx, {
@@ -230,6 +234,22 @@ export default component$(() => {
         el._chartInstance = inst;
       }
     }
+  });
+
+  // Cleanup on unmount to avoid lingering chart instances across navigations
+  useVisibleTask$(() => {
+    return () => {
+      const el: any = radarChart.value as any;
+      if (!el) return;
+      const existingByRegistry = (Chart as any).getChart ? (Chart as any).getChart(el) : null;
+      if (existingByRegistry && typeof existingByRegistry.destroy === 'function') {
+        existingByRegistry.destroy();
+      }
+      if (el._chartInstance && typeof el._chartInstance.destroy === 'function') {
+        el._chartInstance.destroy();
+        el._chartInstance = undefined;
+      }
+    };
   });
 
 
