@@ -6,6 +6,9 @@ import { ChecklistContext } from "~/store/checklist-context";
 import type { Priority, Sections, Section } from '~/types/PSC';
 import Icon from '~/components/core/icon';
 
+// Hold a single Chart.js instance across renders (client-only)
+let radarChartInstance: any = null;
+
 /**
  * Component for client-side user progress metrics.
  * Combines checklist data with progress from local storage,
@@ -183,18 +186,19 @@ export default component$(() => {
         Chart.register(...registerables);
         anyChart._qwikRegistered = true;
       }
-      const el = radarChart.value as any;
+      const el = radarChart.value as HTMLCanvasElement & { _chartInstance?: any };
       const ctx = el.getContext('2d');
       if (ctx) {
+        // Clear canvas before drawing
+        ctx.clearRect(0, 0, el.width, el.height);
         const labels = (checklists.value as Sections).map((s: Section) => s.title);
-        // Destroy any existing chart bound to this canvas (from registry or element)
+        // Destroy any previous instances
         const existingByRegistry = (Chart as any).getChart ? (Chart as any).getChart(el) : null;
-        if (existingByRegistry && typeof existingByRegistry.destroy === 'function') {
-          existingByRegistry.destroy();
-        }
-        const prev = el._chartInstance as any | undefined;
-        if (prev && typeof prev.destroy === 'function') prev.destroy();
-        const inst = new Chart(ctx, {
+        if (existingByRegistry && typeof existingByRegistry.destroy === 'function') existingByRegistry.destroy();
+        if (radarChartInstance && typeof radarChartInstance.destroy === 'function') radarChartInstance.destroy();
+        if (el._chartInstance && typeof el._chartInstance.destroy === 'function') el._chartInstance.destroy();
+
+        radarChartInstance = new Chart(ctx, {
           type: 'radar',
           data: {
             labels,
@@ -231,7 +235,7 @@ export default component$(() => {
             },
           },
         });
-        el._chartInstance = inst;
+        el._chartInstance = radarChartInstance;
       }
     }
   });
@@ -239,15 +243,18 @@ export default component$(() => {
   // Cleanup on unmount to avoid lingering chart instances across navigations
   useVisibleTask$(() => {
     return () => {
-      const el: any = radarChart.value as any;
-      if (!el) return;
-      const existingByRegistry = (Chart as any).getChart ? (Chart as any).getChart(el) : null;
-      if (existingByRegistry && typeof existingByRegistry.destroy === 'function') {
-        existingByRegistry.destroy();
+      const el = radarChart.value as HTMLCanvasElement & { _chartInstance?: any } | undefined;
+      if (el) {
+        const existingByRegistry = (Chart as any).getChart ? (Chart as any).getChart(el) : null;
+        if (existingByRegistry && typeof existingByRegistry.destroy === 'function') existingByRegistry.destroy();
+        if (el._chartInstance && typeof el._chartInstance.destroy === 'function') {
+          el._chartInstance.destroy();
+          el._chartInstance = undefined;
+        }
       }
-      if (el._chartInstance && typeof el._chartInstance.destroy === 'function') {
-        el._chartInstance.destroy();
-        el._chartInstance = undefined;
+      if (radarChartInstance && typeof radarChartInstance.destroy === 'function') {
+        radarChartInstance.destroy();
+        radarChartInstance = null;
       }
     };
   });
