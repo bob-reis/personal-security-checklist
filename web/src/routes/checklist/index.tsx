@@ -1,6 +1,7 @@
 import { component$, useContext } from "@builder.io/qwik";
 
 import { ChecklistContext } from '~/store/checklist-context';
+import BackButton from '~/components/furniture/back-button';
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import { useChecklist } from '~/store/local-checklist-store';
 import type { Section } from "~/types/PSC";
@@ -13,6 +14,9 @@ export default component$(() => {
 
   return (
     <main class="p-8">
+      <div class="flex justify-between items-center mb-4">
+        <BackButton />
+      </div>
       <div class="join join-vertical w-full">
         {(localChecklist.checklist.checklist || checklists.value).map((section: Section, index: number) => (
           <div key={index} class={['collapse collapse-plus bg-base-200 my-4', `border-double border-2 border-${section.color}-400`]}>
@@ -54,6 +58,9 @@ export default component$(() => {
             </div>
           </div>
         ))}
+      </div>
+      <div class="flex justify-between items-center mt-8">
+        <BackButton />
       </div>
     </main>
   );

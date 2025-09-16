@@ -8,7 +8,8 @@ logger = logging.getLogger(__name__)
 
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 yaml_file_path = os.path.join(project_root, 'personal-security-checklist.yml')
-markdown_file_path = os.path.join(project_root, 'CHECKLIST.md')
+# Insert generated content into README.md between checklist markers
+markdown_file_path = os.path.join(project_root, 'README.md')
 
 
 def read_yaml(file_path):

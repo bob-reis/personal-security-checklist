@@ -20,8 +20,7 @@ export default component$(() => {
   const [checkedItems] = useLocalStorage('PSC_PROGRESS', {});
   // Ignored items, from local storage
   const [ignoredItems] = useLocalStorage('PSC_IGNORED', {});
-  // Local storage for closing and ignoring the welcome dialog
-  const [ignoreDialog, setIgnoreDialog] = useLocalStorage('PSC_CLOSE_WELCOME', false);
+  // Removed welcome dialog state (previously PSC_CLOSE_WELCOME)
   // Store to hold calculated progress results
   const totalProgress = useSignal({ completed: 0, outOf: 0 });
   // Ref to the radar chart canvas
@@ -408,21 +407,6 @@ export default component$(() => {
   // Beware, some god-awful markup ahead (thank Tailwind for that!)
   return (
   <div class="flex justify-center flex-wrap items-stretch gap-6 mb-4 relative">
-    {(!ignoreDialog.value && (!Object.keys(checkedItems.value).length) ) && (
-    <div class="
-      px-16 py-8 top-1/3 z-10 max-w-lg
-      absolute flex flex-col justify-center bg-gray-600 rounded-md bg-clip-padding
-      backdrop-filter backdrop-blur-md bg-opacity-40 border border-stone-800">
-        <button
-          class="absolute top-1 right-1 btn btn-sm opacity-50"
-          onClick$={() => setIgnoreDialog(true)}
-          >Fechar</button>
-        <p class="text-xl block text-center font-bold">Sem estatísticas ainda</p>
-        <p class="w-md text-left my-2">Você verá seu progresso aqui quando começar a marcar os itens das checklists</p>
-        <p class="w-md text-left my-2">Comece selecionando uma checklist abaixo</p>
-      </div>
-    )}
-
     <div class="flex justify-center flex-col items-center gap-6">
       {/* Progress Percent */}
       <div class="rounded-box bg-front shadow-md w-96 p-4">
