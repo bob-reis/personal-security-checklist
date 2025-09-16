@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useOnWindow, useContext } from "@builder.io/qwik";
+import { $, component$, useSignal, useContext, useVisibleTask$ } from "@builder.io/qwik";
 import { Chart, registerables } from 'chart.js';
 
 import { useLocalStorage } from "~/hooks/useLocalStorage";
@@ -24,8 +24,9 @@ export default component$(() => {
   const [ignoreDialog, setIgnoreDialog] = useLocalStorage('PSC_CLOSE_WELCOME', false);
   // Store to hold calculated progress results
   const totalProgress = useSignal({ completed: 0, outOf: 0 });
-  // Ref to the radar chart canvas
+  // Ref to the radar chart canvas and instance
   const radarChart  = useSignal<HTMLCanvasElement>();
+  const chartInstance = useSignal<Chart | null>(null);
   // Completion data for each section
   const sectionCompletion =  useSignal<number[]>([]);
 
@@ -167,6 +168,109 @@ export default component$(() => {
       );
     }));
   }));
+
+  // Random tips for the small card (keeps same layout/size)
+  const tips = [
+    'Use senhas únicas e um gerenciador de senhas.',
+    'Ative 2FA em contas importantes (app autenticador).',
+    'Mantenha navegador e extensões sempre atualizados.',
+    'Evite links suspeitos e verifique remetentes de e‑mail.',
+    'Faça backups regulares e teste a restauração.',
+    'Criptografe seu dispositivo e bloqueie a tela.',
+    'Revogue apps e sessões antigas nas suas contas.',
+    'Prefira navegadores com bloqueio de rastreadores.',
+  ];
+  const currentTip = useSignal('');
+
+  // Recompute progress and charts when storage or data changes; set a random tip
+  useVisibleTask$(async ({ track, cleanup }) => {
+    track(() => checkedItems.value);
+    track(() => ignoredItems.value);
+    track(() => checklists.value);
+
+    // Pick a tip (once per visibility/recalc)
+    if (!currentTip.value) {
+      currentTip.value = tips[Math.floor(Math.random() * tips.length)] || tips[0];
+    }
+
+    // Update totals
+    totalProgress.value = await calculateProgress(checklists.value as Sections);
+
+    // Update per-level progress bars
+    const containers = ['#essential-container', '#optional-container', '#advanced-container'];
+    containers.forEach((sel) => {
+      const el = document.querySelector(sel) as HTMLElement | null;
+      if (el) el.innerHTML = '';
+    });
+    const essential = await filterByPriority(checklists.value as Sections, 'essential');
+    const optional = await filterByPriority(checklists.value as Sections, 'optional');
+    const advanced = await filterByPriority(checklists.value as Sections, 'advanced');
+    const essentialPct = Math.round((await calculateProgress(essential)).completed / Math.max((await calculateProgress(essential)).outOf, 1) * 100);
+    const optionalPct = Math.round((await calculateProgress(optional)).completed / Math.max((await calculateProgress(optional)).outOf, 1) * 100);
+    const advancedPct = Math.round((await calculateProgress(advanced)).completed / Math.max((await calculateProgress(advanced)).outOf, 1) * 100);
+    await drawProgress(essentialPct, '#essential-container');
+    await drawProgress(optionalPct, '#optional-container');
+    await drawProgress(advancedPct, '#advanced-container');
+
+    // Update radar chart values
+    sectionCompletion.value = await Promise.all((checklists.value as Sections).map((section: Section) => {
+      const id = (pt: string) => pt.toLowerCase().replace(/ /g, '-');
+      const total = section.checklist.filter((i) => !ignoredItems.value[id(i.point)]).length;
+      const done = section.checklist.filter((i) => checkedItems.value[id(i.point)]).length;
+      return total ? Math.round((done / total) * 100) : 0;
+    }));
+
+    // (Re)draw radar chart
+    if (chartInstance.value) {
+      chartInstance.value.destroy();
+      chartInstance.value = null;
+    }
+    if (radarChart.value) {
+      // Ensure Chart.js is registered
+      Chart.register(...registerables);
+      const ctx = radarChart.value.getContext('2d');
+      if (ctx) {
+        const labels = (checklists.value as Sections).map((s: Section) => s.title);
+        chartInstance.value = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels,
+            datasets: [
+              {
+                label: 'Conclusão por seção',
+                data: sectionCompletion.value,
+                backgroundColor: 'rgba(34, 197, 94, 0.2)', // green-500 @ 20%
+                borderColor: '#22c55e',
+                pointBackgroundColor: '#22c55e',
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            scales: {
+              r: {
+                min: 0,
+                max: 100,
+                grid: { display: true, color: '#7d7d7dd4' },
+                angleLines: { color: '#7d7d7dd4' },
+                pointLabels: { color: '#9ca3af', font: { size: 10 } },
+                ticks: { display: false },
+              },
+            },
+            plugins: {
+              legend: { position: 'bottom', labels: { font: { size: 10 } } },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => `Concluído ${Math.round(ctx.parsed.r)}% de ${ctx.dataset.label || ''}`,
+                },
+              },
+            },
+          },
+        });
+      }
+    }
+  });
 
 
   interface RadarChartData {
@@ -327,16 +431,10 @@ export default component$(() => {
         </div>
         ))}
       </div>
-      {/* Something ??? */}
+      {/* Tips card (random tip, same layout/size) */}
       <div class="p-4 rounded-box bg-front shadow-md w-96 flex-grow">
-        <p class="text-sm opacity-80 mb-2">
-          Em seguida, considere migrar para aplicativos e serviços
-          mais seguros e que respeitam a privacidade.
-        </p>
-        <p class="text-lg">
-          Veja nosso diretório de softwares recomendados em
-          <a class="link link-secondary font-bold" href="https://awesome-privacy.xyz"> awesome-privacy.xyz</a>
-        </p>
+        <p class="text-sm opacity-80 mb-2">Dica rápida de segurança:</p>
+        <p class="text-lg">{currentTip.value}</p>
       </div>
     </div>
 
