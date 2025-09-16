@@ -147,6 +147,7 @@ export default component$(() => {
    * Initiate the filtering, calculation and rendering of progress charts
    */
   // Recalculate whenever local progress or checklist data changes
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ track }) => {
     track(() => JSON.stringify(checkedItems.value));
     track(() => JSON.stringify(ignoredItems.value));
@@ -242,40 +243,33 @@ export default component$(() => {
 
     Chart.register(...registerables);
     makeRadarData(checklists.value).then((data) => {
-      if (radarChart.value) {
-        // Destroy old instance if present
-        try { radarInstance.value?.destroy?.(); } catch (_e) { /* no-op: chart not initialized */ }
-        radarInstance.value = new Chart(radarChart.value, {
+      const canvas = radarChart.value;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      if (radarInstance.value) {
+        // Update existing chart to avoid duplicate renders
+        radarInstance.value.data = data;
+        radarInstance.value.update();
+      } else {
+        radarInstance.value = new Chart(canvas, {
           type: 'radar',
           data,
           options: {
             responsive: true,
             scales: {
               r: {
-                angleLines: {
-                  display: true,
-                  color: '#7d7d7da1',
-                },
+                angleLines: { display: true, color: '#7d7d7da1' },
                 suggestedMin: 0,
                 suggestedMax: 100,
-                ticks: {
-                  display: false,
-                  stepSize: 25,
-                },
-                grid: {
-                  display: true,
-                  color: '#7d7d7dd4',
-                },
+                ticks: { display: false, stepSize: 25 },
+                grid: { display: true, color: '#7d7d7dd4' },
               },
             },
             plugins: {
               legend: {
                 position: 'bottom',
-                labels: {
-                  font: {
-                    size: 10,
-                  },
-                },
+                labels: { font: { size: 10 } },
               },
               tooltip: {
                 callbacks: {
