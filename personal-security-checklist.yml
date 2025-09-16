@@ -4,10 +4,10 @@
   icon: password
   color: yellow
   intro: >-
-    A maioria das violações de dados relatadas é causada pelo uso de senhas fracas, padrão ou roubadas
-    (de acordo com [este relatório da Verizon](http://www.verizonenterprise.com/resources/reports/rp_dbir-2016-executive-summary_xg_en.pdf)).
-    Use senhas longas, fortes e únicas; gerencie-as em um gerenciador de senhas seguro; habilite
-    a autenticação em dois fatores; acompanhe vazamentos; e tenha cuidado ao fazer login nas suas contas.
+    A maioria das violações de dados relatadas é causada pelo uso de senhas fracas, padrão ou roubadas,
+    segundo diversos relatórios de segurança. Use senhas longas, fortes e únicas; gerencie-as em um
+    gerenciador de senhas seguro; habilite a autenticação em dois fatores; acompanhe vazamentos; e
+    tenha cuidado ao fazer login nas suas contas.
   checklist:
   - point: Use uma Senha Forte
     priority: Essential
@@ -15,10 +15,7 @@
       Se sua senha for muito curta ou contiver palavras de dicionário, lugares ou nomes, ela pode ser facilmente
       quebrada por força bruta ou adivinhada por alguém. A forma mais simples de ter uma senha forte é torná-la
       longa (12+ caracteres) — considere usar uma “frase‑secreta” composta por várias palavras. Alternativamente,
-      use um gerador para criar uma senha aleatória, longa e forte. Experimente o
-      [How Secure Is My Password? do Security.org](https://security.org/how-secure-is-my-password/) para ter uma ideia de quão rápido senhas comuns
-      podem ser quebradas. Leia mais sobre como criar senhas fortes em:
-      [securityinabox.org](https://securityinabox.org/en/passwords/passwords-and-2fa/).
+      use um gerador para criar uma senha aleatória, longa e forte. Evite padrões óbvios e sequências previsíveis.
 
   - point: Não Reutilize Senhas
     priority: Essential
@@ -35,9 +32,7 @@
       Um gerenciador de senhas gera, armazena e preenche automaticamente suas credenciais de login.
       Todas as suas senhas ficam criptografadas sob uma senha mestra (que você deve lembrar, e ela deve ser
       bem forte). A maioria dos gerenciadores possui extensões de navegador e apps móveis, para preencher
-      senhas em qualquer dispositivo. Uma boa opção geral é o
-      [Bitwarden](https://awesome-privacy.xyz/essentials/password-managers/bitwarden); veja também
-      [Gerenciadores de Senhas Recomendados](https://awesome-privacy.xyz/essentials/password-managers).
+      senhas em qualquer dispositivo. Prefira soluções confiáveis e com histórico de segurança consistente.
 
   - point: Evite Compartilhar Senhas
     priority: Essential
@@ -51,9 +46,8 @@
     details: >-
       Na 2FA você fornece algo que sabe (senha) e algo que tem (por exemplo, um código no celular) para entrar.
       Assim, mesmo que alguém tenha sua senha (por phishing, malware ou vazamento), não conseguirá acessar a conta.
-      É fácil começar: baixe um [aplicativo autenticador](https://github.com/Lissy93/awesome-privacy#2-factor-authentication)
-      no celular e ative a 2FA nas configurações de segurança da conta. Ao entrar num novo dispositivo, será pedido
-      o código exibido no app (funciona sem internet e o código costuma mudar a cada 30 segundos).
+      É fácil começar: use um aplicativo autenticador no celular e ative a 2FA nas configurações de segurança da conta.
+      Ao entrar num novo dispositivo, será pedido um código temporário gerado localmente (normalmente a cada 30 segundos).
 
   - point: Guarde os Códigos de Backup com Segurança
     priority: Essential
@@ -67,11 +61,9 @@
     priority: Optional
     details: >-
       Após um grande vazamento, os dados frequentemente vão parar na internet. Há serviços que coletam esses registros
-      e permitem buscar seu e‑mail para verificar se está em alguma lista.
-      [Firefox Monitor](https://monitor.firefox.com), [Have I Been Pwned](https://haveibeenpwned.com)
-      e [DeHashed](https://dehashed.com) permitem cadastro para monitoramento, enviando alertas quando seu e‑mail
-      aparecer em novos conjuntos de dados. Isso ajuda a trocar senhas rapidamente nas contas afetadas. O [Have I Been Pwned](https://awesome-privacy.xyz/security-tools/online-tools/have-i-been-pwned)
-      também oferece alertas por domínio inteiro (útil se você usa aliases com [encaminhamento anônimo](https://github.com/Lissy93/awesome-privacy#anonymous-mail-forwarding)).
+      e permitem buscar seu e‑mail para verificar se está em alguma lista. Considere cadastrar seu e‑mail em serviços de
+      monitoramento de vazamentos para receber alertas quando ele aparecer em novos conjuntos de dados. Isso ajuda a
+      trocar senhas rapidamente nas contas afetadas.
 
   - point: Proteja sua Senha/PIN ao Digitar
     priority: Optional
@@ -84,8 +76,8 @@
     details: >-
       Vazamentos são comuns e é possível que algumas de suas senhas já estejam expostas.
       Atualizar ocasionalmente as senhas de contas críticas pode ajudar a mitigar riscos. Mas, se todas são longas,
-      fortes e únicas, não há necessidade de trocar com frequência — anual costuma ser suficiente. Forçar trocas
-      periódicas obrigatórias não é [mais recomendado](https://duo.com/decipher/microsoft-will-no-longer-recommend-forcing-periodic-password-changes), pois leva a senhas mais fracas.
+      fortes e únicas, não há necessidade de trocar com frequência. Forçar trocas periódicas obrigatórias pode levar
+      a senhas mais fracas.
 
   - point: Não Salve Senhas no Navegador
     priority: Optional
@@ -127,61 +119,51 @@
     priority: Optional
     details: >-
       Ao habilitar MFA, prefira códigos por aplicativo ou chave de hardware, quando disponíveis. SMS é suscetível a
-      ameaças como [troca de SIM](https://www.maketecheasier.com/sim-card-hijacking) e [interceptação](https://secure-voice.com/ss7_attacks).
-      Além disso, não há garantia de como seu número será armazenado/uso. Do ponto de vista prático, SMS depende de sinal
-      e pode ser lento. Se um serviço exigir número por SMS para recuperação, considere adquirir um número pré‑pago
-      secundário usado apenas para isso.
+      sequestro de número (SIM swap) e interceptação, e pode não ser adequado como método principal. Do ponto de vista
+      prático, SMS depende de sinal e pode ser lento. Se um serviço exigir número por SMS para recuperação, considere
+      usar um número secundário dedicado somente a esse fim.
 
   - point: Evite Gerar OTP no Mesmo Gerenciador de Senhas
     priority: Advanced
     details: >-
       Muitos gerenciadores geram códigos 2FA, mas evite usar o mesmo para senhas e 2FA — isso cria um ponto único de falha.
-      Prefira um [app autenticador dedicado](https://github.com/Lissy93/awesome-privacy#2-factor-authentication) no celular ou computador.
+      Prefira um aplicativo autenticador dedicado no celular ou computador.
 
   - point: Evite Desbloqueio por Rosto
     priority: Advanced
     details: >-
-      Muitos dispositivos oferecem reconhecimento facial. É prático, mas existem formas de [enganá‑lo](https://www.forbes.com/sites/jvchamary/2017/09/18/security-apple-face-id-iphone-x/)
-      usando fotos/vídeos. Diferente da sua senha, seu rosto provavelmente está exposto publicamente.
+      Muitos dispositivos oferecem reconhecimento facial. É prático, mas existem formas de enganá‑lo usando fotos ou vídeos.
+      Diferente da sua senha, seu rosto provavelmente está exposto publicamente.
 
   - point: Atenção a Keyloggers
     priority: Advanced
     details: >-
-      Um [keylogger de hardware](https://en.wikipedia.org/wiki/Hardware_keylogger) é um dispositivo entre o teclado e a porta USB
-      que intercepta teclas (às vezes enviando a um servidor remoto), expondo tudo digitado. Verifique conexões USB após períodos
-      sem supervisão e sinais de violação no teclado. Dados digitados em teclado virtual, colados ou preenchidos por gerenciador
-      de senhas não são capturados por keyloggers de hardware.
+      Um keylogger de hardware é um dispositivo entre o teclado e a porta USB que intercepta teclas (às vezes enviando a um
+      servidor remoto), expondo tudo digitado. Verifique conexões USB após períodos sem supervisão e sinais de violação no teclado.
+      Dados digitados em teclado virtual, colados ou preenchidos por gerenciador de senhas não são capturados por keyloggers de hardware.
 
   - point: Considere uma Chave de Segurança (Token)
     priority: Advanced
     details: >-
-      Chaves U2F/FIDO2 são dispositivos USB/NFC usados no login para verificar sua identidade, substituindo códigos TOTP.
-      Exemplos: [SoloKey](https://solokeys.com) e [NitroKey](https://www.nitrokey.com). Como o navegador conversa diretamente
-      com o dispositivo e valida o certificado TLS, ataques de phishing/redirecionamento são mitigados. Veja uma ótima explicação
-      [neste post](https://security.stackexchange.com/a/71704). Guarde a chave em local seguro. Algumas contas permitem múltiplos métodos de 2FA.
+      Chaves de segurança compatíveis com U2F/FIDO2 são dispositivos USB/NFC usados no login para verificar sua identidade,
+      substituindo códigos TOTP. Como o navegador conversa diretamente com o dispositivo e valida o certificado TLS,
+      ataques de phishing/redirecionamento são mitigados. Guarde a chave em local seguro. Algumas contas permitem múltiplos métodos de 2FA.
 
   - point: Considere um Gerenciador Offline
     priority: Advanced
     details: >-
-      Para segurança adicional, um gerenciador offline criptografado dá controle total sobre seus dados.
-      O [KeePass](https://awesome-privacy.xyz/essentials/password-managers/keepass) é popular, com muitos [plugins](https://keepass.info/plugins.html)
-      e forks da comunidade. Clientes comuns: [KeePassXC](https://keepassxc.org) (desktop), [KeePassDX](https://www.keepassdx.com) (Android)
-      e [StrongBox](https://apps.apple.com/us/app/strongbox-password-safe/id897283731) (iOS). A desvantagem é menor conveniência e a necessidade de
-      fazer backup/armazenar com cuidado.
+      Para segurança adicional, um gerenciador offline criptografado dá controle total sobre seus dados. A desvantagem é
+      menor conveniência e a necessidade de fazer backup/armazenar com cuidado. Considere essa opção se preferir manter
+      todo o controle localmente e estiver disposto a administrar sincronização e cópias de segurança por conta própria.
 
   - point: Considere Usuários/Identificadores Únicos
     priority: Advanced
     details: >-
       Ter senhas diferentes já é um ótimo passo; se você também usar usuário, e‑mail ou número de telefone únicos por conta,
       fica muito mais difícil obter acesso indevido. Para múltiplos e‑mails, use aliases gerados automaticamente para
-      encaminhamento anônimo ([anything]@seudominio.com chega na sua caixa), permitindo e‑mail diferente por conta (veja
-      [provedores de alias](https://github.com/Lissy93/awesome-privacy#mail-forwarding)). Usuários podem ser gerados e salvos
-      pelo gerenciador; números virtuais podem vir do seu provedor VOIP.
-  softwareLinks:
-    - title: Gerenciadores de Senhas
-      url: https://awesome-privacy.xyz/essentials/password-managers
-    - title: Autenticação em 2 Fatores
-      url: https://awesome-privacy.xyz/essentials/2-factor-authentication
+      encaminhamento anônimo, permitindo e‑mail diferente por conta. Usuários podem ser gerados e salvos pelo gerenciador;
+      números virtuais podem ser obtidos junto ao seu provedor de telefonia ou VOIP.
+  
 
 - title: Navegação Web
   slug: web-browsing
