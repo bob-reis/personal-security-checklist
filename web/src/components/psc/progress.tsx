@@ -472,10 +472,7 @@ export default component$(() => {
         <p class="text-sm opacity-80 mb-2 pr-12">
           {OPSEC_TIPS[tipOrder.value[tipIndex.value] ?? 0]}
         </p>
-        <p class="text-lg">
-          Veja nosso diretório de softwares recomendados em
-          <a class="link link-secondary font-bold" href="https://awesome-privacy.xyz"> awesome-privacy.xyz</a>
-        </p>
+        {/* Link removido conforme solicitado */}
       </div>
     </div>
 
