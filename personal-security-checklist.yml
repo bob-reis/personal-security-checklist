@@ -192,89 +192,64 @@
   - point: Bloqueie Anúncios
     priority: Essential
     details: >-
-      Usar um bloqueador de anúncios pode ajudar a melhorar sua privacidade, bloqueando os rastreadores que os anúncios implementam.
-      [uBlock Origin](https://awesome-privacy.xyz/networking/ad-blockers/ublock-origin) é um
-      addon de navegador muito eficiente e de código aberto,
-      desenvolvido por Raymond Hill. Quando anúncios de terceiros são exibidos numa página web, eles têm a capacidade de
-      rastreá-lo, coletando informações pessoais sobre você e seus hábitos, que podem então ser vendidas ou usadas
-      para mostrar anúncios mais direcionados, e alguns anúncios são claramente maliciosos ou falsos. Bloquear anúncios também faz as páginas
-      carregarem mais rápido, usa menos dados e proporciona uma experiência menos bagunçada.
+      Usar um bloqueador de anúncios pode ajudar a melhorar sua privacidade, reduzindo rastreadores incorporados em anúncios.
+      Anúncios de terceiros podem coletar dados sobre sua navegação e, em alguns casos, distribuir conteúdo malicioso ou enganoso.
+      Bloquear anúncios também acelera o carregamento das páginas, reduz o consumo de dados e melhora a experiência de navegação.
 
   - point: Certifique-se de que o Site é Legítimo
     priority: Basic
     details: >-
-      Pode parecer óbvio, mas ao fazer login em qualquer conta online, verifique duas vezes se a URL está correta.
-      Armazenar sites visitados frequentemente nos seus favoritos é uma boa forma de garantir que a URL seja fácil de encontrar. Ao
-      visitar novos sites, procure por sinais comuns de que pode ser inseguro: avisos do navegador, redirecionamentos,
-      spam no site e pop-ups. Você também pode verificar um site usando uma ferramenta, como:
-      [Virus Total](https://awesome-privacy.xyz/security-tools/online-tools/virus-total),
-      [IsLegitSite](https://www.islegitsite.com), [Google Safe Browsing Status](https://transparencyreport.google.com/safe-browsing/search)
-      se tiver dúvidas.
+      Ao fazer login em qualquer conta online, verifique duas vezes se a URL está correta.
+      Salvar nos favoritos os sites que você visita com frequência ajuda a evitar digitar endereços errados.
+      Ao visitar novos sites, procure sinais de risco: avisos do navegador, redirecionamentos suspeitos,
+      excesso de anúncios, pop-ups e solicitações de permissões desnecessárias. Em caso de dúvida, pesquise a reputação
+      do site e desconfie de ofertas ou solicitações que pareçam urgentes ou boas demais para ser verdade.
 
   - point: Cuidado com Malware no Navegador
     priority: Basic
     details: >-
-      Seu sistema ou navegador pode ser comprometido por spyware, mineradores, sequestradores de navegador, redirecionamentos maliciosos,
-      adware etc. Você geralmente pode se manter protegido: ignorando pop-ups, sendo cauteloso com o que clica,
-      não prosseguindo para um site se seu navegador avisar que pode ser malicioso. Sinais comuns de malware no navegador
-      incluem: mecanismo de busca padrão ou página inicial foi modificada, barras de ferramentas, extensões ou ícones desconhecidos,
-      significativamente mais anúncios, erros e páginas carregando muito mais devagar que o normal. Estes artigos da Heimdal
-      explicam [sinais de malware no navegador](https://heimdalsecurity.com/blog/warning-signs-operating-system-infected-malware),
-      [como navegadores ficam infectados](https://heimdalsecurity.com/blog/practical-online-protection-where-malware-hides)
-      e [como remover malware do navegador](https://heimdalsecurity.com/blog/malware-removal).
+      Seu sistema ou navegador pode ser comprometido por spyware, mineradores, sequestradores de navegador, redirecionamentos maliciosos
+      e adware. Proteja-se ignorando pop-ups, sendo cauteloso com cliques e evitando prosseguir quando o navegador sinalizar risco.
+      Sinais comuns de infecção incluem: mudança inesperada do mecanismo de busca ou página inicial, barras de ferramentas ou extensões
+      desconhecidas, aumento de anúncios, erros frequentes e páginas muito mais lentas que o normal. Em caso de suspeita, revise extensões,
+      redefina configurações do navegador e considere uma verificação completa do dispositivo.
 
   - point: Use um Navegador que Respeita a Privacidade
     priority: Essential
     details: >-
-      [Firefox](https://awesome-privacy.xyz/essentials/browsers/firefox) (com alguns ajustes)
-      e [Brave](https://awesome-privacy.xyz/essentials/browsers/brave-browser)
-      são navegadores seguros que respeitam a privacidade. Ambos são rápidos, de código aberto, fáceis de usar e disponíveis em todos os
-      principais sistemas operacionais. Seu navegador tem acesso a tudo que você faz online, então se possível, evite
-      Google Chrome, Edge e Safari pois (sem configuração adequada) todos os três coletam dados de uso,
-      se comunicam com seus servidores e permitem rastreamento invasivo. Firefox requer algumas mudanças para atingir segurança ótima,
-      por exemplo - configurações user.js do [arkenfox](https://github.com/arkenfox/user.js/wiki) ou [12byte](https://12bytes.org/firefox-configuration-guide-for-privacy-freaks-and-performance-buffs/).
-      Veja mais: [Navegadores Privados](https://github.com/Lissy93/awesome-privacy#browsers).
+      Prefira um navegador com foco em privacidade e segurança e revise suas configurações para minimizar telemetria e rastreamento.
+      Desative coleta de dados de uso, bloqueie cookies de terceiros e ative proteções contra rastreadores.
+      Seu navegador tem acesso a tudo que você faz online — manter o software atualizado e ajustar as opções de privacidade
+      reduz significativamente a exposição.
 
   - point: Use um Motor de Busca Privado
     priority: Essential
     details: >-
-      Usar um motor de busca que preserva a privacidade e não rastreia reduzirá o risco de que seus termos de busca sejam
-      registrados ou usados contra você. Considere [DuckDuckGo](https://awesome-privacy.xyz/essentials/search-engines/duckduckgo),
-      ou [Qwant](https://awesome-privacy.xyz/essentials/search-engines/qwant).
-      Google implementa algumas políticas de rastreamento [incrivelmente invasivas](https://hackernoon.com/data-privacy-concerns-with-google-b946f2b7afea)
-      e tem histórico de exibir [resultados de busca tendenciosos](https://www.businessinsider.com/evidence-that-google-search-results-are-biased-2014-10).
-      Portanto Google, junto com Bing, Baidu, Yahoo e Yandex são incompatíveis com qualquer pessoa que busca proteger
-      sua privacidade. É recomendado atualizar a [busca padrão do seu navegador](https://duckduckgo.com/install)
-      para um motor de busca que respeita a privacidade.
+      Prefira um mecanismo de busca que minimize coleta de dados e não crie perfis de rastreamento.
+      Evite mecanismos que personalizam resultados com base em histórico e identificadores persistentes.
+      Defina sua opção preferida como padrão no navegador para reduzir exposições acidentais.
 
   - point: Remova Complementos Desnecessários do Navegador
     priority: Essential
     details: >-
-      Extensões conseguem ver, registrar ou modificar qualquer coisa que você faça no navegador, e alguns aplicativos do navegador aparentemente inocentes
-      têm intenções maliciosas. Sites podem ver quais extensões você tem instaladas e podem
-      usar isso para aprimorar sua impressão digital, para identificá-lo/rastreá-lo com mais precisão. Tanto a loja do [Firefox](https://awesome-privacy.xyz/essentials/browsers/firefox) quanto do Chrome
-      permitem verificar quais permissões/direitos de acesso uma extensão requer antes de instalá-la.
-      Verifique as avaliações. Instale apenas extensões que realmente precisa e remova aquelas que não usou por um tempo.
+      Extensões podem ver, registrar ou modificar o que você faz no navegador; algumas aparentemente inofensivas podem ter
+      comportamento indesejado. Sites também podem detectar extensões instaladas e usar isso para melhorar a impressão digital
+      do seu navegador. Antes de instalar, verifique as permissões solicitadas. Instale apenas o que realmente precisa e
+      remova complementos que não usa há algum tempo.
 
   - point: Mantenha o Navegador Atualizado
     priority: Essential
     details: >-
-      Vulnerabilidades de navegadores são constantemente [descobertas](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=browser)
-      e corrigidas, então é importante mantê-lo atualizado para evitar explorações de dia zero. Você pode [ver qual versão do navegador
-      está usando aqui](https://www.whatismybrowser.com/), ou seguir [este guia](https://www.whatismybrowser.com/guides/how-to-update-your-browser/)
-      para instruções de como atualizar. Alguns navegadores atualizarão automaticamente para a versão estável mais recente.
+      Vulnerabilidades são encontradas e corrigidas continuamente, então manter o navegador atualizado reduz a exposição a falhas
+      recentes. Verifique regularmente por atualizações nas configurações e prefira habilitar atualizações automáticas quando possível.
 
   - point: Verifique a Conexão HTTPS
     priority: Essential
     details: >-
       Se você inserir informações em um site não-HTTPS, esses dados são transportados sem criptografia e, portanto,
-      podem ser lidos por qualquer pessoa que os intercepte. Não insira dados em um site sem HTTPS, mas também não deixe
-      o cadeado verde lhe dar uma falsa sensação de segurança, pois apenas porque um site tem um certificado SSL
-      não significa que ele seja legítimo ou confiável. [HTTPS-Everywhere](https://www.eff.org/https-everywhere)
-      (desenvolvido pela [EFF](https://www.eff.org/)) costumava ser uma extensão de navegador que automaticamente
-      habilitava HTTPS em sites, mas a partir de 2022 está descontinuado. Em seu [artigo de anúncio](https://www.eff.org/),
-      a EFF explica que a maioria dos navegadores agora integra tais proteções. Adicionalmente, ele fornece instruções
-      para [Firefox](https://awesome-privacy.xyz/essentials/browsers/firefox), Chrome, Edge e Safari sobre como habilitar suas proteções seguras HTTPS.
+      podem ser lidos por qualquer pessoa que os intercepte. Não insira dados em sites sem HTTPS e desconfie de páginas
+      com avisos de segurança. O ícone de cadeado indica conexão criptografada, mas não garante que o site seja confiável.
+      Nas configurações do navegador, ative proteções que priorizam conexões seguras sempre que possível.
 
   - point: Use DNS sobre HTTPS
     priority: Essential
@@ -282,22 +257,17 @@
       O DNS tradicional faz solicitações em texto simples para que todos possam ver. Isso permite interceptação e
       manipulação de dados DNS através de ataques de homem no meio. Considerando que o DNS-over-HTTPS realiza
       resolução de DNS via protocolo HTTPS, significando que dados entre você e seu resolvedor DNS são criptografados.
-      Uma opção popular é o [1.1.1.1](https://awesome-privacy.xyz/security-tools/mobile-apps/1.1.1.1) da [CloudFlare](https://awesome-privacy.xyz/networking/dns-providers/cloudflare), ou compare provedores - é simples de habilitar no navegador.
-      Note que o DoH possui seus próprios problemas, principalmente por impedir a filtragem da web.
+      Escolha um provedor confiável e habilite o recurso nas configurações do navegador ou do sistema.
+      Observe que o DoH possui trade-offs, como afetar soluções de filtragem de conteúdo na rede.
 
-  - point: Multi-[Sessão](https://awesome-privacy.xyz/communication/encrypted-messaging/session) Containers
+  - point: Multi‑Sessão (Containers)
     priority: Essential
     details: >-
       Compartimentalização é realmente importante para manter diferentes aspectos da sua navegação separados. Por
       exemplo, usar diferentes perfis para trabalho, navegação geral, mídia social, compras online etc
       reduzirá o número de associações que os corretores de dados podem vincular de volta a você. Uma opção é fazer
-      uso dos [Containers do Firefox](https://awesome-privacy.xyz/security-tools/browser-extensions/firefox-multi-account-containers)
-      que são projetados especificamente para este propósito.
-      Alternativamente, você pode
-      usar diferentes navegadores para diferentes tarefas
-      ([Brave](https://awesome-privacy.xyz/essentials/browsers/brave-browser),
-      [Firefox](https://awesome-privacy.xyz/essentials/browsers/firefox),
-      [Tor](https://awesome-privacy.xyz/networking/mix-networks/tor) etc).
+      uso de containers/perfis separados dedicados para cada contexto. Alternativamente, use navegadores distintos para
+      tarefas diferentes, mantendo sessões, cookies e logins isolados entre si.
 
   - point: Use Modo Anônimo
     priority: Essential
@@ -310,8 +280,8 @@
     priority: Essential
     details: >-
       Impressão digital do navegador é um método incrivelmente preciso de rastreamento, onde um site identifica você
-      com base nas informações do seu dispositivo. Você pode visualizar sua impressão digital em amiunique.org - O objetivo é ser
-      o menos único possível.
+      com base nas informações do seu dispositivo. Você pode testar sua impressão digital em serviços especializados;
+      o objetivo é tornar seu navegador o menos único possível.
 
   - point: Gerencie os Cookies
     priority: Essential
@@ -324,24 +294,22 @@
     priority: Essential
     details: >-
       Cookies de terceiros são colocados em seu dispositivo por um site diferente daquele que você está visitando. Isso
-      representa um risco de privacidade, pois uma terceira entidade pode coletar dados da sua sessão atual. Este guia explica
-      como você pode desativar cookies de terceiros, e você pode verificar aqui para garantir que funcionou.
+      representa um risco de privacidade, pois uma terceira entidade pode coletar dados da sua sessão atual. Desative
+      cookies de terceiros nas configurações do navegador e verifique periodicamente se a configuração permanece ativa.
 
   - point: Bloqueie Rastreadores de Terceiros
     priority: Essential
     details: >-
-      Bloquear rastreadores ajudará a impedir que sites, anunciantes, sistemas de análise e outros rastreiem você
-      em segundo plano. [Privacy Badger](https://awesome-privacy.xyz/security-tools/browser-extensions/privacy-badger),
-      [DuckDuckGo Privacy Essentials](https://awesome-privacy.xyz/security-tools/browser-extensions/privacy-essentials),
-      [uBlock Origin](https://awesome-privacy.xyz/networking/ad-blockers/ublock-origin) e uMatrix (avançado)
-      são todos bloqueadores de rastreadores muito eficazes, de código aberto, disponíveis para todos os principais navegadores.
+      Bloquear rastreadores ajuda a impedir que sites, anunciantes e sistemas de análise coletem seus dados em segundo plano.
+      Habilite as proteções de rastreamento do navegador e, se necessário, utilize apenas complementos confiáveis para reforçar
+      o bloqueio — instale o mínimo necessário e revise permissões e impacto na privacidade.
 
   - point: Cuidado com Redirecionamentos
     priority: Optional
     details: >-
       Embora alguns redirecionamentos sejam inofensivos, outros, como redirecionamentos não validados, são usados em ataques de phishing,
-      podendo fazer com que um link malicioso pareça legítimo. Se você não tiver certeza sobre um URL de redirecionamento, pode verificar
-      para onde ele encaminha usando uma ferramenta como RedirectDetective.
+      podendo fazer com que um link malicioso pareça legítimo. Se não tiver certeza sobre um URL de redirecionamento,
+      confira o destino final com cuidado ou evite clicar.
 
   - point: Não Faça Login no Navegador
     priority: Optional
@@ -353,23 +321,23 @@
   - point: Desative Serviços de Previsão
     priority: Optional
     details: >-
-      Alguns navegadores permitem serviços de predição, onde você recebe resultados de pesquisa em tempo real ou preenchimento automático de URL.
-      Se isso estiver habilitado, dados são enviados para o Google (ou seu mecanismo de busca padrão) a cada tecla pressionada,
-      em vez de somente quando você pressiona enter.
+      Alguns navegadores incluem serviços de predição, como resultados em tempo real e preenchimento automático de URL.
+      Se habilitados, os caracteres digitados podem ser enviados ao mecanismo de busca padrão a cada tecla pressionada.
+      Avalie essa troca e desative o recurso se priorizar privacidade.
 
-  - point: Evite o Google Translate para Páginas Web
+  - point: Evite Tradutores Integrados para Páginas Web
     priority: Optional
     details: >-
-      Quando você visita uma página web escrita em um idioma estrangeiro, pode ser solicitado a instalar a extensão Google Translate.
-      Esteja ciente de que o Google coleta todos os dados (incluindo campos de entrada), junto com detalhes do estado atual
-      do usuário. Em vez disso, use um serviço de tradução que não esteja vinculado ao seu navegador.
+      Ao traduzir páginas inteiras, verifique como o serviço lida com dados exibidos e digitados na página.
+      Evite soluções que enviem todo o conteúdo da página (incluindo possíveis campos sensíveis) sem transparência
+      e prefira opções que ofereçam maior controle sobre o que é compartilhado.
 
   - point: Desative Notificações Web
     priority: Optional
     details: >-
       Notificações push do navegador são um método comum usado por criminosos para incentivá-lo a clicar em seus links, já que
-      é fácil falsificar a fonte. Esteja ciente disso, e para instruções sobre como desativar notificações do navegador,
-      consulte este artigo.
+      é fácil falsificar a fonte. Desative solicitações de notificação nas configurações do navegador e permita apenas
+      para sites estritamente necessários.
 
   - point: Desative Downloads Automáticos
     priority: Optional
@@ -411,8 +379,8 @@
     priority: Optional
     details: >-
       O ataque de Exfiltração de CSS é um método onde credenciais e outros detalhes sensíveis podem ser capturados
-      apenas com CSS puro. Você pode se proteger
-      com o plugin [CSS Exfil Protection](https://awesome-privacy.xyz/security-tools/browser-extensions/css-exfil-protection).
+      apenas com CSS puro. Reduza o risco desativando o preenchimento automático em campos sensíveis,
+      usando bloqueio de conteúdo ativo e mantendo o navegador e extensões atualizados.
 
   - point: Desative ActiveX
     priority: Optional
@@ -425,14 +393,15 @@
     priority: Optional
     details: >-
       WebRTC permite comunicação de áudio/vídeo de alta qualidade e compartilhamento de arquivos ponto a ponto diretamente
-      no navegador. No entanto, pode representar um vazamento de privacidade. Para saber mais, consulte este guia.
+      no navegador. No entanto, pode expor endereços IP em alguns cenários. Se você não precisa desse recurso,
+      desative-o nas configurações ou por perfil.
 
   - point: Falsifique Assinatura de Canvas HTML5
     priority: Optional
     details: >-
-      A Impressão Digital de Canvas permite que sites identifiquem e rastreiem usuários com muita precisão. Você pode usar a
-      extensão Canvas-Fingerprint-Blocker para falsificar sua impressão digital ou
-      usar o [Tor](https://awesome-privacy.xyz/networking/mix-networks/tor).
+      A impressão digital de canvas permite que sites identifiquem e rastreiem usuários com alta precisão.
+      Algumas soluções conseguem aleatorizar ou padronizar essa assinatura; avalie o impacto em compatibilidade
+      e desempenho antes de habilitar.
 
   - point: Falsifique o Agente de Usuário
     priority: Optional
@@ -449,9 +418,8 @@
   - point: Evite Rastreamento HSTS
     priority: Optional
     details: >-
-      HSTS foi projetado para ajudar a proteger sites, mas preocupações de privacidade foram levantadas pois permitia que
-      operadores de sites plantassem super-cookies. Ele pode ser desativado visitando chrome://net-internals/#hsts em
-      navegadores baseados no Chromium.
+      HSTS foi projetado para proteger conexões, mas já foi explorado para criar identificadores persistentes ("super‑cookies").
+      Revise e limpe políticas HSTS e dados de site nas configurações de privacidade do navegador, se necessário.
 
   - point: Evite Conexões Automáticas do Navegador
     priority: Optional
@@ -462,17 +430,15 @@
   - point: Habilite Isolamento de Primeira Parte
     priority: Optional
     details: >-
-      [Isolamento de Primeira Parte](https://awesome-privacy.xyz/security-tools/browser-extensions/first-party-isolation) significa
-      que todas as fontes de identificadores e estados do navegador são definidos usando o domínio da barra de URL,
-      o que pode reduzir significativamente o rastreamento.
+      Isolamento de primeira parte significa que cookies, cache e outros identificadores ficam restritos ao domínio
+      em foco. Quando disponível, habilitar esse isolamento reduz significativamente o rastreamento entre sites.
 
   - point: Remova Parâmetros de Rastreamento das URLs
     priority: Advanced
     details: >-
       Sites frequentemente adicionam parâmetros GET adicionais às URLs que você clica, para identificar informações como
-      fonte/referência. Você pode limpar manualmente,
-      ou usar uma extensão como [ClearURLs](https://awesome-privacy.xyz/security-tools/browser-extensions/clearurls) para remover dados de rastreamento
-      das URLs automaticamente.
+      fonte/referência. Você pode limpar manualmente esses parâmetros nas URLs ou utilizar regras/filtros que removam
+      identificadores de rastreamento automaticamente.
 
   - point: Segurança na Primeira Inicialização
     priority: Advanced
@@ -481,26 +447,18 @@
       a maioria dos navegadores fará conexão de volta. Portanto, após instalar um navegador, você deve primeiro desativar sua conexão de internet,
       depois configurar as opções de privacidade antes de reativar sua conectividade de internet.
 
-  - point: Use o Navegador Tor
+  - point: Considere Navegação com Roteamento em Múltiplos Nós
     priority: Advanced
     details: >-
-      O Projeto [Tor](https://awesome-privacy.xyz/networking/mix-networks/tor) fornece um navegador que criptografa e redireciona seu tráfego através de múltiplos nós, mantendo
-      usuários seguros contra interceptação e rastreamento. As principais desvantagens são velocidade e experiência do usuário.
+      Navegadores que roteiam o tráfego por múltiplos nós e aplicam proteções adicionais podem aumentar o anonimato
+      e dificultar interceptação e rastreamento, à custa de velocidade e experiência de uso.
 
   - point: Desative o JavaScript
     priority: Advanced
     details: >-
       Muitas aplicações web modernas são baseadas em JavaScript, então desativá-lo reduzirá significativamente sua experiência de navegação.
       Mas se você realmente quiser ir a fundo, isso definitivamente reduzirá sua superfície de ataque.
-  softwareLinks:
-    - title: Privacy Browsers
-      url: https://github.com/Lissy93/awesome-privacy#browsers
-    - title: Search Engines
-      utl: https://github.com/Lissy93/awesome-privacy#search-engines
-    - title: Browser Extensions
-      url: https://github.com/Lissy93/awesome-privacy#browser-extensions
-    - title: Browser & Bookmark Sync
-      url: https://github.com/Lissy93/awesome-privacy#browser-sync
+  
   color: emerald
 
 - title: Email
@@ -508,26 +466,12 @@
   description: Protegendo a porta de entrada para suas contas online
   icon: email
   intro: >-
-    Quase 50 anos desde que o primeiro email foi enviado, ainda é uma grande parte
-    do nosso dia a dia, e continuará sendo no futuro próximo. Então considerando
-    quanta confiança depositamos neles, é surpreendente como esta
-    infraestrutura é fundamentalmente insegura. Fraudes relacionadas a email
-    [estão em ascensão](https://www.csoonline.com/article/3247670/email/email-security-in-2018.html),
-    e sem tomar medidas básicas você pode estar em risco.
-    
+    O email é parte central do nosso dia a dia e continuará sendo no futuro próximo. Apesar disso, a infraestrutura do
+    correio eletrônico tem limitações históricas de segurança e privacidade. Relatos indicam aumento de golpes por email e
+    técnicas de engenharia social, portanto é importante adotar medidas básicas de proteção.
 
-    Se um hacker obtém acesso aos seus emails, isso fornece uma porta de entrada para que suas outras
-    contas sejam comprometidas (através de redefinições de senha), portanto a segurança de email
-    é fundamental para sua segurança digital.
-
-
-    As grandes empresas que fornecem serviço de email "gratuito" não têm boa reputação
-    para respeitar a privacidade dos usuários: Gmail foi pego dando
-    [acesso total a terceiros](https://www.wsj.com/articles/techs-dirty-secret-the-app-developers-sifting-through-your-gmail-1530544442)
-    aos emails dos usuários e também [rastreando todas as suas compras](https://www.cnbc.com/2019/05/17/google-gmail-tracks-purchase-history-how-to-delete-it.html).
-    Yahoo também foi pego escaneando emails em tempo real [para agências de vigilância dos EUA](http://news.trust.org/item/20161004170601-99f8c)
-    Anunciantes [receberam acesso](https://thenextweb.com/insider/2018/08/29/both-yahoo-and-aol-are-scanning-customer-emails-to-attract-advertisers)
-    às mensagens dos usuários do Yahoo e AOL para "identificar e segmentar potenciais clientes captando sinais contextuais de compra e compras passadas."
+    Se alguém obtiver acesso à sua caixa de entrada, pode usar redefinições de senha para comprometer outras contas. Por isso,
+    reforçar a segurança do email é essencial para a sua segurança digital como um todo.
 
   checklist:
   - point: Tenha mais de um endereço de email
@@ -554,7 +498,7 @@
     details: >-
       Mensagens de email podem conter conteúdo remoto como imagens ou folhas de estilo, frequentemente carregadas automaticamente
       do servidor. Você deve desabilitar isso, pois expõe seu endereço IP e informações do dispositivo, e
-      é frequentemente usado para rastreamento. Para mais informações, veja [este artigo](https://www.theverge.com/2019/7/3/20680903/email-pixel-trackers-how-to-stop-images-automatic-download).
+      é frequentemente usado para rastreamento. Desative o carregamento automático e permita conteúdo remoto apenas quando necessário.
 
   - point: Use Texto Simples
     priority: Optional
@@ -562,8 +506,8 @@
       Há dois tipos principais de emails na internet: texto simples e HTML. O primeiro é fortemente preferido
       para privacidade e segurança pois mensagens HTML frequentemente incluem identificadores em links e imagens inline, que podem
       coletar dados de uso e pessoais. Há também numerosos riscos de execução remota de código visando o parser HTML
-      do seu cliente de email, que não podem ser explorados se você estiver usando texto simples. Para mais informações, assim como
-      instruções de configuração para seu provedor de email, veja [UsePlaintext.email](https://useplaintext.email/).
+      do seu cliente de email, que não podem ser explorados se você estiver usando texto simples. Consulte a documentação do
+      seu provedor/cliente de email para habilitar a visualização em texto simples e bloquear conteúdo remoto por padrão.
 
   - point: Não conecte aplicativos de terceiros à sua conta de email
     priority: Optional
@@ -580,11 +524,9 @@
   - point: Considere Mudar para um Provedor de Email Seguro
     priority: Optional
     details: >-
-      Provedores de e-mail seguros e confiáveis como [Forward Email](https://awesome-privacy.xyz/communication/encrypted-email/forward-email),
-      [ProtonMail](https://awesome-privacy.xyz/communication/mail-forwarding/protonmail)
-      e [Tutanota](https://awesome-privacy.xyz/communication/encrypted-email/tuta) permitem criptografia ponta a ponta, 
-      privacidade total e recursos mais focados em segurança. Diferentemente dos provedores de e-mail típicos, sua 
-      caixa de correio não pode ser lida por ninguém além de você, já que todas as mensagens são criptografadas.
+      Considere provedores com foco em segurança e privacidade, que ofereçam criptografia ponta a ponta, políticas claras
+      de proteção de dados, autenticação forte e recursos como aliases e bloqueio de rastreamento. Verifique também a
+      jurisdição, a transparência sobre como os dados são tratados e a disponibilidade de clientes multiplataforma.
 
   - point: Use uma Chave Inteligente
     priority: Advanced
@@ -617,8 +559,9 @@
   - point: Sincronize com um cliente para backup
     priority: Advanced
     details: >-
-      Para evitar perder acesso temporário ou permanente aos seus e-mails durante um evento não planejado (como uma interrupção ou
-      bloqueio de conta), o Thunderbird pode sincronizar/fazer backup de mensagens de várias contas via IMAP e armazenar localmente no seu dispositivo principal.
+      Para evitar perder acesso temporário ou permanente aos seus e-mails durante um evento não planejado (como interrupção
+      ou bloqueio de conta), use um cliente de email de desktop para sincronizar/baixar mensagens via IMAP e armazenar
+      uma cópia local no seu dispositivo principal.
 
   - point: Tenha Cuidado com Assinaturas de Email
     priority: Advanced
@@ -669,15 +612,7 @@
       mantendo uma lista local de IPs bloqueados atualizada e listas de bloqueio em tempo real de URIs de spam 
       para filtrar hiperlinks maliciosos.
   color: teal
-  softwareLinks:
-    - title: Secure Email Providers
-      url: https://github.com/Lissy93/awesome-privacy#encrypted-email
-    - title: Mail Forwarding
-      url: https://github.com/Lissy93/awesome-privacy#anonymous-mail-forwarding
-    - title: Pre-Configured Mail Servers
-      url: https://github.com/Lissy93/awesome-privacy#pre-configured-mail-servers
-    - title: Email Clients
-      url: https://github.com/Lissy93/awesome-privacy#email-clients
+  
 
 - title: Messaging
   slug: mensagens
@@ -802,11 +737,6 @@
     details: >-
       Se todos os dados passarem por um provedor central, você terá que confiar neles com seus dados e metadados. Não é
       possível verificar se o sistema em execução é autêntico sem portas traseiras.
-  softwareLinks:
-    - title: Aplicativos de Mensagens Seguras
-      url: https://github.com/Lissy93/awesome-privacy#encrypted-messaging
-    - title: Plataformas de Mensagens P2P
-      url: https://github.com/Lissy93/awesome-privacy#p2p-messaging
   color: cyan
 
 - title: Social Media
@@ -814,18 +744,10 @@
   description: Minimizando os riscos associados ao uso de comunidades online
   icon: social
   intro: >
-    Comunidades online existem desde a invenção da internet e proporcionam
-    às pessoas ao redor do mundo a oportunidade de se conectar, comunicar e compartilhar.
-    Embora essas redes sejam uma ótima maneira de promover interação social e
-    reunir pessoas, elas têm um lado negro - existem sérias
-    [Preocupações de Privacidade com Serviços de Redes Sociais](https://en.wikipedia.org/wiki/Privacy_concerns_with_social_networking_services),
-    e esses sites de redes sociais são de propriedade de corporações privadas
-    que ganham dinheiro coletando dados sobre indivíduos e
-    vendendo esses dados, muitas vezes para anunciantes terceiros.
-
-    Proteja sua conta, bloqueie suas configurações de privacidade, mas saiba que mesmo
-    após fazer isso, todos os dados carregados intencional e não intencionalmente são
-    efetivamente públicos. Se possível, evite usar redes sociais convencionais.
+    Comunidades online existem desde o início da internet e permitem que pessoas ao redor do mundo se conectem, se
+    comuniquem e compartilhem. Apesar dos benefícios sociais, há preocupações significativas de privacidade e coleta de
+    dados por plataformas. Proteja sua conta, ajuste as configurações de privacidade e, mesmo assim, considere que
+    conteúdo publicado pode tornar-se efetivamente público. Se possível, limite o uso de redes sociais convencionais.
   checklist:
   - point: Proteja sua Conta
     priority: Essential
@@ -897,9 +819,9 @@
   - point: Implemente Camuflagem de Imagem
     priority: Advanced
     details: >-
-      Ferramentas como Fawkes podem ser usadas para alterar sutilmente a estrutura dos rostos em fotos de uma
-      maneira imperceptível para humanos, mas que impedirá que sistemas de reconhecimento facial reconheçam
-      um determinado rosto.
+      Técnicas de camuflagem podem alterar sutilmente características em imagens para reduzir a eficácia de sistemas
+      automáticos de reconhecimento facial, sem mudanças perceptíveis para humanos. Avalie vantagens e limitações
+      antes de aplicar em larga escala.
 
   - point: Considere Falsear GPS na Vizinhança da Casa
     priority: Advanced
@@ -918,15 +840,6 @@
       Redes sociais são fundamentalmente não privadas, então para máxima segurança online e privacidade, evite usar
       qualquer rede social convencional.
 
-  softwareLinks:
-    - title: Redes Sociais Alternativas
-      url: https://github.com/Lissy93/awesome-privacy#social-networks
-    - title: Plataformas de Vídeo Alternativas
-      url: https://github.com/Lissy93/awesome-privacy#video-platforms
-    - title: Plataformas de Blog Alternativas
-      url: https://github.com/Lissy93/awesome-privacy#blogging-platforms
-    - title: Leitores de Notícias e Agregação
-      url: https://github.com/Lissy93/awesome-privacy#news-readers-and-aggregation
   color: blue
 
 - title: Redes
@@ -977,8 +890,8 @@
   - point: Use um Protocolo VPN Seguro
     priority: Optional
     details: >-
-      OpenVPN e WireGuard são protocolos de tunelamento de código aberto, leves e seguros. 
-      Evite usar PPTP ou SSTP.
+      Prefira protocolos modernos com criptografia robusta e desempenho estável. 
+      Evite opções legadas conhecidas por fragilidades.
 
   - point: Proteja o DNS
     priority: Optional
@@ -1021,7 +934,6 @@
     details: >-
       O Service Set Identifier (SSID) do seu roteador é simplesmente o nome da rede. 
       Se não for visível, pode aumentar marginalmente a segurança, embora não seja uma medida definitiva.
-      less abuse.
 
   - point: Desative WPS
     priority: Optional
@@ -1076,11 +988,11 @@
       É comum querer aumentar ao máximo o alcance do seu roteador, mas se você reside em um apartamento menor,
       sua área de superfície de ataque é aumentada quando sua rede WiFi pode ser captada do outro lado da rua.
 
-  - point: Direcione Todo o Tráfego através do [Tor](https://awesome-privacy.xyz/networking/mix-networks/tor)
+  - point: Considere Roteamento em Múltiplos Nós
     priority: Advanced
     details: >-
-      VPNs têm suas fraquezas. Para maior segurança, direcione todo o seu tráfego de internet através da rede
-      [Tor](https://awesome-privacy.xyz/networking/mix-networks/tor).
+      VPNs têm limitações. Para maior anonimato, considere soluções que roteiam o tráfego por múltiplos nós
+      independentes, adicionando camadas de proteção contra correlação e rastreamento, com custo de desempenho.
 
   - point: Desative o WiFi em Todos os Dispositivos
     priority: Advanced
@@ -1088,23 +1000,6 @@
       Conectar-se a uma rede WiFi, mesmo segura, aumenta sua área de superfície de ataque. Desative o WiFi
       doméstico e conecte cada dispositivo via Ethernet.
   color: violet
-  softwareLinks:
-  - title: Virtual Private Networks
-    url: https://github.com/Lissy93/awesome-privacy#virtual-private-networks
-  - title: Mix Networks
-    url: https://github.com/Lissy93/awesome-privacy#mix-networks
-  - title: Router Firmware
-    url: https://github.com/Lissy93/awesome-privacy#router-firmware
-  - title: Open Source Proxies
-    url: https://github.com/Lissy93/awesome-privacy#proxies
-  - title: DNS Providers
-    url: https://github.com/Lissy93/awesome-privacy#dns
-  - title: Firewalls
-    url: https://github.com/Lissy93/awesome-privacy#firewalls
-  - title: Network Analysis Tools
-    url: https://github.com/Lissy93/awesome-privacy#network-analysis
-  - title: Self-Hosted Network Security Tools
-    url: https://github.com/Lissy93/awesome-privacy#self-hosted-network-security
 
 - title: Dispositivos Móveis
   slug: mobile-devices
