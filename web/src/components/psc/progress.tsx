@@ -6,9 +6,6 @@ import { ChecklistContext } from "~/store/checklist-context";
 import type { Priority, Sections, Section } from '~/types/PSC';
 import Icon from '~/components/core/icon';
 
-// Hold a single Chart.js instance across renders (client-only)
-let radarChartInstance: any = null;
-
 /**
  * Component for client-side user progress metrics.
  * Combines checklist data with progress from local storage,
@@ -189,53 +186,56 @@ export default component$(() => {
       const el = radarChart.value as HTMLCanvasElement & { _chartInstance?: any };
       const ctx = el.getContext('2d');
       if (ctx) {
-        // Clear canvas before drawing
-        ctx.clearRect(0, 0, el.width, el.height);
         const labels = (checklists.value as Sections).map((s: Section) => s.title);
-        // Destroy any previous instances
-        const existingByRegistry = (Chart as any).getChart ? (Chart as any).getChart(el) : null;
-        if (existingByRegistry && typeof existingByRegistry.destroy === 'function') existingByRegistry.destroy();
-        if (radarChartInstance && typeof radarChartInstance.destroy === 'function') radarChartInstance.destroy();
-        if (el._chartInstance && typeof el._chartInstance.destroy === 'function') el._chartInstance.destroy();
-
-        radarChartInstance = new Chart(ctx, {
-          type: 'radar',
-          data: {
-            labels,
-            datasets: [
-              {
-                label: 'Conclusão por seção',
-                data: sectionCompletion.value,
-                backgroundColor: 'rgba(34, 197, 94, 0.2)', // green-500 @ 20%
-                borderColor: '#22c55e',
-                pointBackgroundColor: '#22c55e',
-                borderWidth: 1,
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            scales: {
-              r: {
-                min: 0,
-                max: 100,
-                grid: { display: true, color: '#7d7d7dd4' },
-                angleLines: { color: '#7d7d7dd4' },
-                pointLabels: { color: '#9ca3af', font: { size: 10 } },
-                ticks: { display: false },
-              },
+        // If a chart already exists, update it. Otherwise create a new one.
+        const existing = (Chart as any).getChart ? (Chart as any).getChart(el) : (el._chartInstance || null);
+        if (existing) {
+          existing.data.labels = labels;
+          if (existing.data.datasets && existing.data.datasets[0]) {
+            existing.data.datasets[0].data = sectionCompletion.value;
+          }
+          existing.update();
+          el._chartInstance = existing;
+        } else {
+          const inst = new Chart(ctx, {
+            type: 'radar',
+            data: {
+              labels,
+              datasets: [
+                {
+                  label: 'Conclusão por seção',
+                  data: sectionCompletion.value,
+                  backgroundColor: 'rgba(34, 197, 94, 0.2)', // green-500 @ 20%
+                  borderColor: '#22c55e',
+                  pointBackgroundColor: '#22c55e',
+                  borderWidth: 1,
+                },
+              ],
             },
-            plugins: {
-              legend: { position: 'bottom', labels: { font: { size: 10 } } },
-              tooltip: {
-                callbacks: {
-                  label: (ctx) => `Concluído ${Math.round(ctx.parsed.r)}% de ${ctx.dataset.label || ''}`,
+            options: {
+              responsive: true,
+              scales: {
+                r: {
+                  min: 0,
+                  max: 100,
+                  grid: { display: true, color: '#7d7d7dd4' },
+                  angleLines: { color: '#7d7d7dd4' },
+                  pointLabels: { color: '#9ca3af', font: { size: 10 } },
+                  ticks: { display: false },
+                },
+              },
+              plugins: {
+                legend: { position: 'bottom', labels: { font: { size: 10 } } },
+                tooltip: {
+                  callbacks: {
+                    label: (ctx) => `Concluído ${Math.round(ctx.parsed.r)}% de ${ctx.dataset.label || ''}`,
+                  },
                 },
               },
             },
-          },
-        });
-        el._chartInstance = radarChartInstance;
+          });
+          el._chartInstance = inst;
+        }
       }
     }
   });
@@ -252,10 +252,7 @@ export default component$(() => {
           el._chartInstance = undefined;
         }
       }
-      if (radarChartInstance && typeof radarChartInstance.destroy === 'function') {
-        radarChartInstance.destroy();
-        radarChartInstance = null;
-      }
+      // Nothing else to cleanup
     };
   });
 
