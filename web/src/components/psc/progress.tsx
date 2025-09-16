@@ -260,10 +260,8 @@ export default component$(() => {
                 suggestedMin: 0,
                 suggestedMax: 100,
                 ticks: {
+                  display: false,
                   stepSize: 25,
-                  callback: (value) => `${value}%`,
-                  color: '#ffffffbf',
-                  backdropColor: '#ffffff3b',
                 },
                 grid: {
                   display: true,
@@ -297,6 +295,115 @@ export default component$(() => {
     { id: 'optional-container', label: 'Opcional' },
     { id: 'advanced-container', label: 'Avançado' },
   ];
+
+  // OPSEC tips carousel (randomized)
+  const OPSEC_TIPS: string[] = [
+    'Use autenticação de dois fatores (MFA) sempre que possível.',
+    'Evite reutilizar senhas; use um gerenciador de senhas confiável.',
+    'Ative bloqueio de tela automático no celular e no computador.',
+    'Mantenha sistemas e aplicativos atualizados (patches de segurança).',
+    'Prefira chaves de segurança (FIDO2) para contas críticas.',
+    'Nunca clique em links suspeitos; verifique domínios com atenção.',
+    'Desconfie de anexos inesperados, mesmo vindos de contatos conhecidos.',
+    'Separe e-mails: pessoal, financeiro e cadastros com endereços distintos.',
+    'Ative alertas de login/atividade em serviços importantes.',
+    'Revogue sessões e dispositivos que não reconhece com regularidade.',
+    'Revise permissões de apps e extensões periodicamente.',
+    'Use navegadores e extensões focadas em privacidade.',
+    'Navegue em sessões separadas (perfis) para isolar contextos.',
+    'Desabilite pré-visualização de links em mensageiros sensíveis.',
+    'Evite enviar dados sensíveis por e-mail sem criptografia.',
+    'Criptografe o disco do notebook e do telefone.',
+    'Faça backup regular e teste a restauração.',
+    'Cubra a webcam quando não estiver em uso.',
+    'Verifique configurações de privacidade em redes sociais.',
+    'Use passkeys quando disponíveis em vez de senhas.',
+    'Habilite proteções contra SIM swap junto à operadora.',
+    'Nunca compartilhe códigos de verificação com ninguém.',
+    'Use PIN/biometria forte no SIM e no aparelho.',
+    'Desative Bluetooth/Wi‑Fi quando não estiver usando.',
+    'Use uma VPN confiável em redes públicas.',
+    'Evite instalar APKs/softwares fora de fontes oficiais.',
+    'No desktop, evite executar binários desconhecidos.',
+    'Abra documentos suspeitos em sandbox/VM quando possível.',
+    'Separe cartões virtuais para compras online.',
+    'Ative alertas de transação no banco e cartões.',
+    'Use e‑mail com domínio próprio para contas críticas.',
+    'Ative SPF, DKIM e DMARC para seu domínio.',
+    'Use DNS com filtragem de malware e phishing.',
+    'Desabilite macros em documentos por padrão.',
+    'Habilite proteção contra rastreamento entre sites no navegador.',
+    'Limite dados de localização; use permissões “apenas durante uso”.',
+    'Revise apps com acesso ao microfone e câmera.',
+    'Evite expor metadados (EXIF) ao compartilhar fotos.',
+    'Use mensageiros com criptografia de ponta a ponta.',
+    'Ative bloqueio por PIN nas conversas/arquivos sensíveis.',
+    'Crie um e‑mail “queimável” para cadastros descartáveis.',
+    'Evite responder a e‑mails de phishing; denuncie-os.',
+    'Confirme pagamentos via canal secundário antes de transferir.',
+    'Desconfie de urgências artificiais em pedidos suspeitos.',
+    'Separe dispositivos para finanças e para uso geral quando viável.',
+    'Use sistemas operacionais atualizados e mantidos.',
+    'Reduza a superfície: desinstale o que não usa.',
+    'Ative registro de atividades de login onde houver.',
+    'Prefira navegadores em vez de apps quando segurança for prioridade.',
+    'Desative execução automática de mídia/USB.',
+    'Proteja o roteador doméstico: altere senha e firmware atualizado.',
+    'Crie rede Wi‑Fi de convidados para visitantes e IoT.',
+    'Evite expor serviços (RDP/SSH) diretamente na internet.',
+    'Use chaves SSH protegidas por senha + agente.',
+    'Para repositórios, habilite verificação em duas etapas.',
+    'Revogue tokens e chaves antigas periodicamente.',
+    'Verifique URLs de download e hashes dos arquivos.',
+    'Faça auditoria de permissões em contas de nuvem.',
+    'Use contêineres/VMs para tarefas arriscadas.',
+    'Evite postar informações pessoais que permitam engenharia social.',
+    'Ative “Find My Device” e teste o bloqueio remoto.',
+    'Mantenha lista de contatos de emergência e plano de resposta.',
+    'Monitore vazamentos do seu e‑mail/telefone periodicamente.',
+    'Configure alertas de violação de senha no navegador.',
+    'Faça logout de sessões em dispositivos compartilhados.',
+    'Evite pendrives desconhecidos; use somente os próprios.',
+    'Habilite autenticação para aplicativos de e‑mail e calendário.',
+    'Use alias de e‑mail para reduzir spam e rastreamento.',
+    'Desconfie de QR codes não verificados.',
+    'Evite Wi‑Fi “aberto”; confirme SSIDs oficiais.',
+    'Minimize dados em formulários; forneça apenas o necessário.',
+    'Crie respostas de segurança que não sejam óbvias.',
+    'Aplique princípios de menor privilégio em tudo.',
+    'Separe usuários/admin no desktop; evite usar admin no dia a dia.',
+    'Faça varreduras ocasionais por malware/spyware.',
+    'Atualize firmware de dispositivos IoT com regularidade.',
+    'Desative UPnP no roteador se não precisar.',
+    'Ative logs e notificações para alterações críticas.',
+    'Considere eSIM para reduzir risco de troca física de SIM.',
+    'Evite responder a ligações desconhecidas com dados pessoais.',
+    'Valide domínios com cadeado não é suficiente: confira o endereço.',
+    'Use “burner phones” para viagens de alto risco.',
+    'Restrinja dados de preenchimento automático de navegador.',
+    'Evite armazenar cartões no navegador sem criptografia forte.',
+    'Considere autenticação baseada em dispositivo (WebAuthn).',
+  ];
+
+  const tipIndex = useSignal(0);
+  const tipOrder = useSignal<number[]>([]);
+
+  // Initialize and auto-rotate tips
+  useVisibleTask$(() => {
+    // Shuffle order once per mount
+    const arr = Array.from({ length: OPSEC_TIPS.length }, (_, i) => i);
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    tipOrder.value = arr;
+    tipIndex.value = 0;
+
+    const interval = setInterval(() => {
+      tipIndex.value = (tipIndex.value + 1) % tipOrder.value.length;
+    }, 6000);
+    return () => clearInterval(interval);
+  });
 
   // Beware, some god-awful markup ahead (thank Tailwind for that!)
   return (
@@ -342,11 +449,28 @@ export default component$(() => {
         </div>
         ))}
       </div>
-      {/* Something ??? */}
-      <div class="p-4 rounded-box bg-front shadow-md w-96 flex-grow">
-        <p class="text-sm opacity-80 mb-2">
-          Em seguida, considere migrar para aplicativos e serviços
-          mais seguros e que respeitam a privacidade.
+      {/* OPSEC tips carousel + link (size unchanged) */}
+      <div class="p-4 rounded-box bg-front shadow-md w-96 flex-grow relative">
+        {/* Carousel controls (absolute to avoid changing layout height) */}
+        <button
+          class="btn btn-ghost btn-xs absolute top-2 right-8"
+          aria-label="Anterior"
+          onClick$={() => {
+            const len = tipOrder.value.length || 1;
+            tipIndex.value = (tipIndex.value - 1 + len) % len;
+          }}
+        >‹</button>
+        <button
+          class="btn btn-ghost btn-xs absolute top-2 right-2"
+          aria-label="Próxima"
+          onClick$={() => {
+            const len = tipOrder.value.length || 1;
+            tipIndex.value = (tipIndex.value + 1) % len;
+          }}
+        >›</button>
+
+        <p class="text-sm opacity-80 mb-2 pr-12">
+          {OPSEC_TIPS[tipOrder.value[tipIndex.value] ?? 0]}
         </p>
         <p class="text-lg">
           Veja nosso diretório de softwares recomendados em
