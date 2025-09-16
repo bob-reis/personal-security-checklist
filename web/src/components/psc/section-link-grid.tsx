@@ -80,6 +80,7 @@ export default component$((props: { sections: Section[] | any }) => {
   });
 
   // Recalculate when data or progress changes (works on navigation back)
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(async ({ track }) => {
     track(() => checked.value);
     track(() => ignored.value);

@@ -24,9 +24,8 @@ export default component$(() => {
   const [ignoreDialog, setIgnoreDialog] = useLocalStorage('PSC_CLOSE_WELCOME', false);
   // Store to hold calculated progress results
   const totalProgress = useSignal({ completed: 0, outOf: 0 });
-  // Ref to the radar chart canvas and instance
+  // Ref to the radar chart canvas
   const radarChart  = useSignal<HTMLCanvasElement>();
-  const chartInstance = useSignal<Chart | null>(null);
   // Completion data for each section
   const sectionCompletion =  useSignal<number[]>([]);
 
@@ -139,7 +138,7 @@ export default component$(() => {
   const currentTip = useSignal('');
 
   // Recompute progress and charts when storage or data changes; set a random tip
-  useVisibleTask$(async ({ track, cleanup }) => {
+  useVisibleTask$(async ({ track }) => {
     track(() => checkedItems.value);
     track(() => ignoredItems.value);
     track(() => checklists.value);
@@ -177,17 +176,16 @@ export default component$(() => {
     }));
 
     // (Re)draw radar chart
-    if (chartInstance.value) {
-      chartInstance.value.destroy();
-      chartInstance.value = null;
-    }
     if (radarChart.value) {
       // Ensure Chart.js is registered
       Chart.register(...registerables);
       const ctx = radarChart.value.getContext('2d');
       if (ctx) {
         const labels = (checklists.value as Sections).map((s: Section) => s.title);
-        chartInstance.value = new Chart(ctx, {
+        // Destroy any existing chart bound to this canvas
+        const existing = (Chart as any).getChart ? (Chart as any).getChart(ctx.canvas) : null;
+        if (existing) existing.destroy();
+        new Chart(ctx, {
           type: 'radar',
           data: {
             labels,
