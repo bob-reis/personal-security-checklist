@@ -1,11 +1,15 @@
 // src/routes/articles/index.tsx
 import { component$ } from '@builder.io/qwik';
+import BackButton from '~/components/furniture/back-button';
 import articles from '~/data/articles';
 
 export default component$(() => {
 
   return (
     <div class="px-8 py-4">
+      <div class="flex justify-between items-center mb-4">
+        <BackButton />
+      </div>
       <div class="bg-back shadow-md rounded-box min-h-96 px-4 py-8">
         
       <h2 class="text-4xl mb-4">Artigos</h2>
@@ -23,6 +27,9 @@ export default component$(() => {
         ))}
       </ul>
 
+      </div>
+      <div class="flex justify-between items-center mt-6">
+        <BackButton />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { component$, useResource$, Resource } from "@builder.io/qwik";
+import BackButton from '~/components/furniture/back-button';
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 import Icon from "~/components/core/icon";
@@ -44,12 +45,18 @@ export default component$(() => {
 
   return (
     <div class="m-4 md:mx-16">
+      <div class="flex justify-between items-center mb-4">
+        <BackButton />
+      </div>
       <article class="bg-back p-8 mx-auto max-w-[1200px] m-8 rounded-lg shadow-md">
         <h2 class="text-3xl mb-2">Sobre a Lista de Segurança</h2>
         {intro.map((paragraph, index) => (
           <p class="mb-2" key={index}>{paragraph}</p>
         ))}        
       </article>
+      <div class="flex justify-between items-center mt-6">
+        <BackButton />
+      </div>
       <div class="divider"></div>
 
       <article class="bg-back p-8 mx-auto max-w-[1200px] m-8 rounded-lg shadow-md">

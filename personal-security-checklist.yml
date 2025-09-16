@@ -1035,8 +1035,8 @@
   - point: Permissões de Aplicativos
     priority: Essential
     details: >-
-      Não conceda aos aplicativos permissões que eles não precisam. Para Android, [Bouncer](https://awesome-privacy.xyz/security-tools/mobile-apps/bouncer) 
-      é um aplicativo que permite conceder permissões temporárias ou únicas.
+      Não conceda aos aplicativos permissões que eles não precisam. Revise regularmente acesso a localização, câmera,
+      microfone, contatos e sensores. Quando disponível, prefira permissões temporárias ou de uso único.
 
   - point: Instale aplicativos apenas de fontes oficiais
     priority: Essential
@@ -1059,13 +1059,13 @@
   - point: Saia das Listagens de ID de Chamadas
     priority: Optional
     details: >-
-      Para manter seus detalhes privados, você pode remover seu número de aplicativos de ID de chamadas como TrueCaller, CallApp, SyncMe,
-      e Hiya.
+      Para manter seus detalhes privados, remova seu número de cadastros públicos e aplicativos de identificação de chamadas,
+      evitando exposição desnecessária.
 
   - point: Use Mapas Offline
     priority: Optional
     details: >-
-      Considere usar um aplicativo de mapas offline, como OsmAnd ou Organic Maps, para reduzir vazamentos de dados de aplicativos de mapas.
+      Considere usar aplicativos de mapas offline para reduzir tráfego de dados e possíveis vazamentos de localização.
 
   - point: Saia de anúncios personalizados
     priority: Optional
@@ -1080,8 +1080,8 @@
   - point: Monitore Rastreadores
     priority: Optional
     details: >-
-      [εxodus](https://awesome-privacy.xyz/security-tools/online-tools/εxodus) é um excelente serviço que
-      permite pesquisar um aplicativo e ver quais rastreadores estão incorporados nele.
+      Avalie periodicamente aplicativos instalados para identificar bibliotecas de rastreamento e reduzir coleta de dados
+      desnecessária. Prefira apps com políticas de privacidade claras e mínimas dependências de rastreadores.
 
   - point: Use um Firewall Móvel
     priority: Optional
@@ -1091,18 +1091,20 @@
   - point: Reduza a Atividade em Segundo Plano
     priority: Optional
     details: >-
-      Para Android, o SuperFreeze permite congelar completamente todas as atividades em segundo plano em cada aplicativo.
+      Limite atividades em segundo plano para apps que não precisam rodar continuamente. Use controles do sistema para
+      restringir atualizações em segundo plano e otimizações de bateria.
 
   - point: Use Sandbox para Aplicativos Móveis
     priority: Optional
     details: >-
-      Impeça que aplicativos ávidos por permissões acessem seus dados privados com o [Island](https://awesome-privacy.xyz/security-tools/mobile-apps/island), um ambiente de sandbox.
+      Utilize perfis de trabalho, usuários separados ou recursos de sandbox/isolamento do sistema para conter aplicativos
+      que pedem permissões excessivas.
 
-  - point: Tráfego Tor
+  - point: Considere Roteamento em Múltiplos Nós
     priority: Advanced
     details: >-
-      [Orbot](https://awesome-privacy.xyz/security-tools/mobile-apps/orbot) fornece
-      uma conexão Tor em todo o sistema, que ajudará a proteger você contra vigilância e ameaças de Wi-Fi público.
+      Em cenários que exigem maior anonimato, considere soluções que roteiem o tráfego por múltiplos nós independentes,
+      adicionando camadas de proteção contra vigilância e redes Wi‑Fi públicas hostis (com custo de desempenho).
 
   - point: Evite Teclados Virtuais Personalizados
     priority: Optional
@@ -1119,15 +1121,14 @@
   - point: Evite SMS
     priority: Optional
     details: >-
-      SMS não deve ser usado para receber códigos de 2FA ou para comunicação. Em vez disso, use um aplicativo de mensagens criptografado,
-      como o [Signal](https://awesome-privacy.xyz/communication/encrypted-messaging/signal).
+      SMS não deve ser usado para receber códigos de 2FA ou para comunicação sensível. Prefira mensageiros com
+      criptografia ponta a ponta.
 
   - point: Mantenha Seu Número Privado
     priority: Optional
     details: >-
-      [MySudo](https://awesome-privacy.xyz/finance/virtual-credit-cards/mysudo) permite
-      criar e usar números de telefone virtuais para diferentes pessoas ou grupos. Isso é ótimo para
-      compartimentalização.
+      Considere números virtuais/linhas secundárias para separar contextos (trabalho, serviços online, vendas),
+      facilitando a compartimentalização e reduzindo spam.
 
   - point: Cuidado com Stalkerware
     priority: Optional
@@ -1147,13 +1148,6 @@
       Se você está preocupado com a quantidade de informações pessoais coletadas pelo fabricante do seu dispositivo,
       considere usar uma ROM personalizada focada em privacidade.
   color: fuchsia
-  softwareLinks:
-  - title: Mobile Apps, for Security + Privacy
-    url: https://github.com/Lissy93/awesome-privacy#mobile-apps
-  - title: Encrypted Messaging
-    url: https://github.com/Lissy93/awesome-privacy#encrypted-messaging
-  - title: Mobile Operation Systems
-    url: https://github.com/Lissy93/awesome-privacy#mobile-operating-systems
 
 - title: Computadores Pessoais
   slug: personal-computers
@@ -1173,15 +1167,14 @@
   - point: Criptografe Seu Dispositivo
     priority: Essential
     details: >-
-      Use BitLocker para Windows, FileVault para MacOS ou LUKS para Linux para habilitar a criptografia de disco completo. Isso
-      previne acesso não autorizado se seu computador for perdido ou roubado.
+      Habilite a criptografia de disco completo fornecida pelo seu sistema operacional. Isso previne acesso não autorizado
+      aos seus dados se o computador for perdido ou roubado.
 
   - point: Faça Backup de Dados Importantes
     priority: Essential
     details: >-
-      Manter backups criptografados previne perdas devido a ransomware, roubo ou danos. Considere usar
-      [Cryptomator](https://awesome-privacy.xyz/security-tools/mobile-apps/cryptomator)
-      para arquivos na nuvem ou [VeraCrypt](https://awesome-privacy.xyz/essentials/file-encryption/veracrypt) para drives USB.
+      Mantenha backups criptografados para prevenir perdas por ransomware, roubo ou danos. Use criptografia
+      para arquivos sincronizados na nuvem e para mídias removíveis (como pendrives e HDs externos).
 
   - point: Ative Bloqueio de Tela quando Inativo
     priority: Essential
@@ -1286,8 +1279,8 @@
   - point: Previna Ataques de Injeção de Teclado
     priority: Optional
     details: >-
-      Bloqueie seu PC quando estiver ausente e considere usar USBGuard ou ferramentas similares para
-      proteger contra ataques de injeção de teclas.
+      Bloqueie seu PC quando estiver ausente e restrinja dispositivos USB desconhecidos. Use políticas que exijam
+      autorização explícita para novos dispositivos a fim de mitigar injeções de teclado.
 
   - point: Não Use Antivírus Comercial "Grátis"
     priority: Optional
@@ -1298,8 +1291,8 @@
   - point: Verifique Periodicamente Rootkits
     priority: Advanced
     details: >-
-      Verifique regularmente rootkits para detectar e mitigar ameaças de controle total do sistema usando
-      ferramentas como [chkrootkit](https://awesome-privacy.xyz/operating-systems/linux-defenses/chkrootkit).
+      Faça verificações periódicas com ferramentas confiáveis de detecção de rootkits para identificar e mitigar
+      tentativas de controle total do sistema.
 
   - point: Senha de Boot da BIOS
     priority: Advanced
@@ -1310,7 +1303,8 @@
   - point: Use um Sistema Operacional Focado em Segurança
     priority: Advanced
     details: >-
-      Considere migrar para Linux ou uma distribuição focada em segurança como o QubeOS ou [Tails](https://awesome-privacy.xyz/operating-systems/desktop-operating-systems/tails) para melhorar privacidade e segurança.
+      Considere migrar para sistemas com foco em privacidade/segurança ou distribuições com configurações reforçadas
+      quando o seu caso de uso exigir maior proteção.
       
   - point: Faça Uso de Máquinas Virtuais
     priority: Advanced
@@ -1358,32 +1352,17 @@
     details: >-
       Implante tokens de canário para detectar acessos não autorizados aos seus arquivos ou e-mails rapidamente e coletar informações sobre o intruso.
         color: pink
-  softwareLinks:
-  - title: Secure Operating Systems
-    url: https://github.com/Lissy93/awesome-privacy#desktop-operating-systems
-  - title: Linux Defenses
-    url: https://github.com/Lissy93/awesome-privacy#linux-defences
-  - title: Windows Defenses
-    url: https://github.com/Lissy93/awesome-privacy#windows-defences
-  - title: Mac OS Defenses
-    url: https://github.com/Lissy93/awesome-privacy#mac-os-defences
-  - title: Anti-Malware
-    url: https://github.com/Lissy93/awesome-privacy#anti-malware
-  - title: Firewalls
-    url: https://github.com/Lissy93/awesome-privacy#firewalls-1
-  - title: File Encryption
-    url: https://github.com/Lissy93/awesome-privacy#file-encryption
+  
 
 - title: Casa Inteligente
   slug: smart-home
   description: Usando dispositivos IoT sem comprometer sua privacidade
   icon: home
   intro: >-
-    Assistentes residenciais (como Google Home, Alexa e Siri) e outros dispositivos conectados à internet
-    coletam grandes quantidades de dados pessoais (incluindo amostras de voz, dados de localização,
-    detalhes da casa e registros de todas as interações). Como você tem controle limitado sobre o que
-    está sendo coletado, como é armazenado e para que será usado, torna-se difícil recomendar qualquer
-    produto de casa inteligente para alguém que se preocupa com privacidade e segurança.
+    Assistentes residenciais e outros dispositivos conectados à internet coletam grandes quantidades de dados pessoais
+    (incluindo amostras de voz, dados de localização, detalhes da casa e registros de interações). Como o controle
+    sobre o que é coletado, como é armazenado e para que será usado é limitado, é difícil recomendar dispositivos
+    de casa inteligente para quem prioriza privacidade e segurança.
 
     Segurança vs Privacidade: Existem muitos dispositivos inteligentes no mercado que alegam aumentar
     a segurança da sua casa, sendo fáceis e convenientes de usar (como Alarmes Inteligentes Antifurto,
@@ -1446,17 +1425,17 @@
     details: >-
       Avalie os riscos de termostatos, alarmes e detectores conectados à internet devido ao potencial acesso remoto por hackers.
 
-  - point: Mitigue os Riscos do Alexa / Google Home
+  - point: Mitigue Riscos de Assistentes por Voz
     priority: Optional
     details: >-
-      Considere alternativas focadas em privacidade como
-      [Mycroft](https://awesome-privacy.xyz/smart-home-and-iot/voice-assistants/mycroft) ou use
-      o Projeto Alias para prevenir escuta ociosa de assistentes por voz.
+      Reduza a ativação por voz, desative o microfone quando não estiver em uso e revise configurações de retenção de
+      gravações. Prefira soluções que ofereçam maior transparência e controle local.
 
   - point: Monitore sua rede doméstica de perto
     priority: Optional
     details: >-
-      Use ferramentas como FingBox ou recursos do roteador para monitorar atividades de rede incomuns.
+      Use recursos do roteador ou de monitoramento local para acompanhar atividades de rede incomuns e detectar
+      dispositivos ou tráfego inesperados.
 
   - point: Negue acesso à Internet sempre que possível
     priority: Advanced
@@ -1468,72 +1447,59 @@
     details: >-
       Considere as implicações de privacidade para todos os membros da casa e ajuste as configurações dos dispositivos para segurança e privacidade, como desativar dispositivos em determinados horários.
   color: red
-  softwareLinks:
-  - title: Automação Residencial
-    url: https://github.com/Lissy93/awesome-privacy#home-automation
-  - title: Assistentes de Voz por IA
-    url: https://github.com/Lissy93/awesome-privacy#ai-voice-assistants
 
 - title: Finanças Pessoais
   slug: personal-finance
   description: Protegendo seus fundos, contas financeiras e transações
   icon: finance
   intro: >-
-    Fraude de cartão de crédito é a forma mais comum de roubo de identidade (com [133.015 relatórios
-    apenas nos EUA em 2017](https://www.experian.com/blogs/ask-experian/identity-theft-statistics/)),
-    e uma perda total de $905 milhões, que foi um aumento de 26% do ano anterior.
-    A quantia mediana perdida por pessoa foi de $429 em 2017.
-    É mais importante do que nunca tomar medidas básicas para se proteger de se tornar vítima.
+    Fraude financeira e roubo de identidade são comuns e causam grandes prejuízos. É importante adotar
+    medidas básicas para reduzir a exposição e reagir rapidamente a atividades suspeitas.
 
-    Nota sobre cartões de crédito: Cartões de crédito possuem métodos tecnológicos para
-    detectar e interromper algumas transações fraudulentas. Grandes processadores de pagamento implementam
-    isso, minerando enormes quantidades de dados de seus portadores de cartão, para conhecer
-    muito sobre os hábitos de gastos de cada pessoa. Esses dados são usados para identificar
-    fraude, mas também são vendidos para outros corretores de dados. Cartões de crédito são, portanto, bons
-    para segurança, mas terríveis para privacidade de dados.
+    Nota sobre cartões de crédito: mecanismos de detecção de fraude podem proteger contra algumas transações
+    indevidas, mas a análise de padrões de gastos também implica coleta de dados. Cartões podem ser bons para
+    segurança, mas têm implicações para privacidade.
   checklist:
   - point: Cadastre-se para Alertas de Fraude e Monitoramento de Crédito
     priority: Essential
     details: >-
-      Ative alertas de fraude e monitoramento de crédito através do Experian, TransUnion ou Equifax para ser alertado sobre atividades suspeitas.
+      Ative alertas de fraude e monitoramento de crédito junto às centrais de crédito do seu país para ser avisado
+      rapidamente sobre atividades suspeitas.
 
   - point: Aplique um Congelamento de Crédito
     priority: Essential
     details: >-
-      Previna consultas de crédito não autorizadas congelando seu crédito através do Experian, TransUnion e Equifax.
+      Previna consultas de crédito não autorizadas solicitando o congelamento de crédito nas principais centrais de
+      crédito da sua região, e descongele apenas quando necessário.
 
   - point: Use Cartões Virtuais
     priority: Optional
     details: >-
-      Utilize números de cartões virtuais para transações online para proteger seus detalhes bancários reais. Serviços como [Privacy.com](https://awesome-privacy.xyz/finance/virtual-credit-cards/privacy.com) e [MySudo](https://awesome-privacy.xyz/finance/virtual-credit-cards/mysudo) oferecem tais recursos.
+      Utilize números de cartão virtuais emitidos pelo seu banco ou provedor de pagamento para compras online, evitando expor
+      os dados do seu cartão físico.
 
   - point: Use Dinheiro em Espécie para Transações Locais
     priority: Optional
     details: >-
-      Pay with [Cash](https://awesome-privacy.xyz/finance/other-payment-methods/cash) for local and everyday purchases to avoid financial profiling by institutions.
+      Prefira pagamentos em espécie para compras locais e do dia a dia quando desejar reduzir a criação de perfis de consumo.
 
   - point: Use Criptomoedas para Transações Online
     priority: Optional
     details: >-
-      Opt for privacy-focused cryptocurrencies like
-      [Monero](https://awesome-privacy.xyz/finance/cryptocurrencies/monero) for
-      online transactions to maintain anonymity. Use cryptocurrencies wisely to ensure privacy.
+      Considere criptomoedas com foco em privacidade para transações online quando adequado ao seu contexto legal. Use-as
+      com responsabilidade e ciente dos riscos de volatilidade e conformidade.
 
   - point: Armazene Criptomoedas com Segurança
     priority: Advanced
     details: >-
-      Armazene criptomoedas com segurança usando geração de carteira offline, carteiras de hardware
-      como [Trezor](https://awesome-privacy.xyz/finance/crypto-wallets/trezor) ou
-      [ColdCard](https://awesome-privacy.xyz/finance/crypto-wallets/coldcard), ou
-      considere soluções de armazenamento de longo prazo como
-      [CryptoSteel](https://awesome-privacy.xyz/finance/crypto-wallets/cryptosteel).
+      Armazene chaves privadas com segurança usando carteiras offline, dispositivos dedicados e cópias de segurança
+      robustas. Proteja frases-semente e evite exposição a ambientes conectados.
 
   - point: Compre Criptomoedas Anonimamente
     priority: Advanced
     details: >-
-      Compre criptomoedas sem vincular à sua identidade através de serviços
-      como [LocalBitcoins](https://awesome-privacy.xyz/finance/crypto-exchanges/localbitcoins),
-      [Bisq](https://awesome-privacy.xyz/finance/crypto-exchanges/bisq), ou caixas eletrônicos Bitcoin.
+      Se necessário e permitido pelas leis locais, utilize métodos de compra que minimizem vinculação direta à sua identidade,
+      ciente dos riscos e obrigações legais.
 
   - point: Misture/ Embaralhe Moedas
     priority: Advanced
@@ -1550,19 +1516,6 @@
     details: >-
       Opte por entregas em endereços não pessoais, como caixas postais, endereços de encaminhamento ou locais de retirada locais para evitar vincular compras diretamente a você.
   color: purple
-  softwareLinks:
-  - title: Virtual Credit Cards
-    url: https://github.com/Lissy93/awesome-privacy#virtual-credit-cards
-  - title: Cryptocurrencies
-    url: https://github.com/Lissy93/awesome-privacy#cryptocurrencies
-  - title: Crypto Wallets
-    url: https://github.com/Lissy93/awesome-privacy#crypto-wallets
-  - title: Crypto Exchanges
-    url: https://github.com/Lissy93/awesome-privacy#crypto-exchanges
-  - title: Other Payment Methods
-    url: https://github.com/Lissy93/awesome-privacy#other-payment-methods
-  - title: Budgeting Tools
-    url: https://github.com/Lissy93/awesome-privacy#budgeting-tools
 
 - title: Aspecto Humano
   slug: human-aspect
@@ -1587,7 +1540,7 @@
   - point: Nunca Deixe o Dispositivo Sem Supervisão
     priority: Essential
     details: >-
-      Dispositivos desatendidos podem ser comprometidos mesmo com senhas fortes. Use criptografia e recursos de apagamento remoto como Find My Phone para dispositivos perdidos.
+      Dispositivos desatendidos podem ser comprometidos mesmo com senhas fortes. Use criptografia e recursos de localização/apagamento remoto para dispositivos perdidos.
 
   - point: Previna Camfecting
     priority: Essential
@@ -1612,8 +1565,7 @@
   - point: Instale Software Confiável de Fontes Seguras
     priority: Essential
     details: >-
-      Baixe apenas software de fontes legítimas e verifique arquivos com ferramentas
-      como [Virus Total](https://awesome-privacy.xyz/security-tools/online-tools/virus-total) antes da instalação.
+      Baixe apenas software de fontes legítimas e, quando possível, verifique arquivos com soluções de detecção de malware antes da instalação.
 
   - point: Armazene dados pessoais com segurança
     priority: Essential
@@ -1668,7 +1620,7 @@
   - point: Proteção de Privacidade WhoIs
     priority: Advanced
     details: >-
-      Use WhoIs Privacy Guard para registros de domínio para proteger suas informações pessoais de pesquisas públicas.
+      Habilite privacidade WHOIS ao registrar domínios para impedir a exposição de seus dados pessoais em consultas públicas.
 
   - point: Use um endereço de encaminhamento
     priority: Advanced
@@ -1687,14 +1639,10 @@
   description: Tomando medidas para prevenir incidentes de segurança na vida real
   icon: physical
   intro: >-
-    Registros públicos frequentemente incluem dados pessoais sensíveis (nome completo, data de nascimento,
-    número de telefone, e-mail, endereço, etnia etc), e são coletados de uma variedade de
-    fontes (registros do censo, certidões de nascimento/óbito/casamento, eleitores registrados,
-    informações de marketing, bancos de dados de clientes, registros de veículos, licenças profissionais/
-    comerciais e todos os arquivos judiciais em detalhes completos). Essas informações pessoais sensíveis são
-    [fáceis e legais de acessar](https://www.consumerreports.org/consumerist/its-creepy-but-not-illegal-for-this-website-to-provide-all-your-public-info-to-anyone/),
-    o que levanta algumas [preocupações sérias de privacidade](https://privacyrights.org/resources/public-records-internet-privacy-dilemma)
-    (roubo de identidade, riscos de segurança pessoal/perseguidores, destruição de reputações, sociedade de dossiês)
+    Registros públicos frequentemente incluem dados pessoais sensíveis (nome completo, data de nascimento, número de telefone,
+    e-mail, endereço, etnia etc.), coletados de diversas fontes (censo, certidões, cadastro de eleitores, marketing,
+    bancos de dados de clientes, registros de veículos, licenças e arquivos judiciais). O fácil acesso a esse material
+    levanta preocupações de privacidade, como roubo de identidade, riscos à segurança pessoal e exposição indevida.
 
 
     CCTV é uma das principais maneiras pelas quais corporações, indivíduos e o governo
@@ -1717,8 +1665,8 @@
   - point: Saia de Registros Públicos
     priority: Essential
     details: |
-      Entre em contato com sites de pesquisa de pessoas para cancelar listagens que mostram informações
-      pessoais, usando guias como o Personal Data Removal Workbook de Michael Bazzell.
+      Entre em contato com sites de pesquisa de pessoas para cancelar listagens que mostrem informações pessoais.
+      Utilize guias confiáveis de remoção de dados para orientar o processo.
 
   - point: Adicione Marca D'água em Documentos
     priority: Essential
@@ -1741,7 +1689,7 @@
 
   - point: Proteja Fisicamente o Dispositivos
     priority: Essential
-    details: Use medidas de segurança física como travas Kensington, coberturas de webcam e telas de privacidade para dispositivos.
+    details: Use medidas de segurança física como travas para laptop, coberturas de webcam e filtros de privacidade de tela para dispositivos.
 
   - point: Mantenha Dispositivos Fora da Vista Direta
     priority: Essential
