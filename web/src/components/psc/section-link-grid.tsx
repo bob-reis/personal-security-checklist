@@ -1,4 +1,4 @@
-import { $, component$, useOnWindow, useSignal } from "@builder.io/qwik";
+import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import type { Checklist, Section } from '~/types/PSC';
@@ -79,20 +79,21 @@ export default component$((props: { sections: Section[] | any }) => {
     return Math.round((done / total) * 100);
   });
 
-  // On load (in browser only), calculate and set completion data for sections
-  useOnWindow('load', $(async () => {
-    const sectionsArr: Section[] = Array.isArray(props.sections) ? props.sections : [];
-    // Percentage completion, per section
-    completions.value = await Promise.all(sectionsArr.map(section => 
-      getPercentCompletion(section),
-    ));
-    // Count of completed items, per section
-    done.value = await Promise.all(sectionsArr.map(section => 
-      section.checklist.filter(
-        (item) => checked.value[item.point.toLowerCase().replace(/ /g, '-')],
-      ).length
-    ));
-  }));
+  // Recalculate when data or local progress changes
+  useVisibleTask$(({ track }) => {
+    track(() => JSON.stringify(checked.value));
+    track(() => JSON.stringify(ignored.value));
+    track(() => JSON.stringify(props.sections));
+    (async () => {
+      const sectionsArr: Section[] = Array.isArray(props.sections) ? props.sections : [];
+      completions.value = await Promise.all(sectionsArr.map(section => getPercentCompletion(section)));
+      done.value = await Promise.all(
+        sectionsArr.map(section => section.checklist.filter(
+          (item) => checked.value[item.point.toLowerCase().replace(/ /g, '-')],
+        ).length)
+      );
+    })();
+  });
 
   return (
     <div class={[styles.container, 'grid',

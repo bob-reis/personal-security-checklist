@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useOnWindow, useContext } from "@builder.io/qwik";
+import { $, component$, useSignal, useContext, useVisibleTask$ } from "@builder.io/qwik";
 import { Chart, registerables } from 'chart.js';
 
 import { useLocalStorage } from "~/hooks/useLocalStorage";
@@ -28,6 +28,8 @@ export default component$(() => {
   const radarChart  = useSignal<HTMLCanvasElement>();
   // Completion data for each section
   const sectionCompletion =  useSignal<number[]>([]);
+  // Chart.js instance reference so we can destroy/redraw
+  const radarInstance = useSignal<any>(null);
 
   /**
    * Calculates the users progress over specified sections.
@@ -86,6 +88,8 @@ export default component$(() => {
       ? document.querySelector(target)
       : (target as unknown as HTMLElement);
     if (!container) return;
+    // Clear previous drawings when re-rendering
+    try { (container as HTMLElement).innerHTML = ''; } catch (_e) { /* no-op: container may be virtual during SSR */ }
     // Define colors in hex/RGB for progressbar.js compatibility
     const primaryColor = color || '#9ca3af'; // gray-400
     const foregroundColor = '#6b7280'; // gray-500
@@ -143,30 +147,37 @@ export default component$(() => {
    * When the window has loaded (client-side only)
    * Initiate the filtering, calculation and rendering of progress charts
    */
-  useOnWindow('load', $(() => {
+  // Recalculate whenever local progress or checklist data changes
+  useVisibleTask$(({ track }) => {
+    track(() => JSON.stringify(checkedItems.value));
+    track(() => JSON.stringify(ignoredItems.value));
+    track(() => JSON.stringify(checklists.value));
 
-    calculateProgress(checklists.value)
-      .then((progress) => {
-        totalProgress.value = progress;
-    })
+    calculateProgress(checklists.value).then((progress) => {
+      totalProgress.value = progress;
+    });
 
-    // Use plain hex for compatibility
-    makeDataAndDrawChart('essential', '#22c55e'); // green-500
-    makeDataAndDrawChart('optional',  '#f59e0b'); // amber-500
-    makeDataAndDrawChart('advanced',  '#ef4444'); // red-500
-  }));
+    makeDataAndDrawChart('essential', '#22c55e');
+    makeDataAndDrawChart('optional',  '#f59e0b');
+    makeDataAndDrawChart('advanced',  '#ef4444');
+  });
 
 
   /**
    * Calculates the percentage of completion for each section
    */
-  useOnWindow('load', $(async () => {
-    sectionCompletion.value = await Promise.all(checklists.value.map(section => {
-      return calculateProgress([section]).then(
-        (progress) => Math.round(progress.completed / progress.outOf * 100)
-      );
-    }));
-  }));
+  useVisibleTask$(({ track }) => {
+    track(() => JSON.stringify(checkedItems.value));
+    track(() => JSON.stringify(ignoredItems.value));
+    track(() => JSON.stringify(checklists.value));
+    (async () => {
+      sectionCompletion.value = await Promise.all(checklists.value.map(section => {
+        return calculateProgress([section]).then(
+          (progress) => progress.outOf > 0 ? Math.round(progress.completed / progress.outOf * 100) : 0
+        );
+      }));
+    })();
+  });
 
 
   interface RadarChartData {
@@ -225,12 +236,17 @@ export default component$(() => {
   
   
 
-  useOnWindow('load', $(() => {
-    Chart.register(...registerables);
+  useVisibleTask$(({ track }) => {
+    track(() => JSON.stringify(checkedItems.value));
+    track(() => JSON.stringify(ignoredItems.value));
+    track(() => JSON.stringify(checklists.value));
 
+    Chart.register(...registerables);
     makeRadarData(checklists.value).then((data) => {
       if (radarChart.value) {
-        new Chart(radarChart.value, {
+        // Destroy old instance if present
+        try { radarInstance.value?.destroy?.(); } catch (_e) { /* no-op: chart not initialized */ }
+        radarInstance.value = new Chart(radarChart.value, {
           type: 'radar',
           data,
           options: {
@@ -272,10 +288,9 @@ export default component$(() => {
             },
           }
         });
-        
       }
     });
-  }));
+  });
 
   const items = [
     { id: 'essential-container', label: 'Essencial' },
