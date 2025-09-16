@@ -6,7 +6,7 @@ export default component$<{
   return (
     <button
       type="button"
-      class="btn btn-sm btn-outline gap-2"
+      class="btn btn-sm gap-2 text-black bg-[#EB33CC] hover:bg-[#d223b9] border-0 shadow-[0_0_10px_#eb33cc] hover:shadow-[0_0_16px_#d223b9]"
       onClick$={() => {
         if (typeof history !== 'undefined' && history.length > 1) {
           history.back();
@@ -19,4 +19,3 @@ export default component$<{
     </button>
   );
 });
-
